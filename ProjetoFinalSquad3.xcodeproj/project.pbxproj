@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		016E90CA43743D374C189153 /* Pods_ProjetoFinalSquad3Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 778BF33D15DC09A408C263B3 /* Pods_ProjetoFinalSquad3Tests.framework */; };
+		3E8ADBFA262A53D100FE0292 /* FavoritosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8ADBF9262A53D100FE0292 /* FavoritosViewController.swift */; };
+		3E8ADC00262A56D400FE0292 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8ADBFE262A56D400FE0292 /* CustomCollectionViewCell.swift */; };
+		3E8ADC01262A56D400FE0292 /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E8ADBFF262A56D400FE0292 /* CustomCollectionViewCell.xib */; };
 		4B6C325315B141F0A25A9E4D /* Pods_ProjetoFinalSquad3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 805D75D09922B15C6EBC6249 /* Pods_ProjetoFinalSquad3.framework */; };
 		AA08198E262719CC00B444B4 /* MoedaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA08198D262719CC00B444B4 /* MoedaViewModel.swift */; };
 		AA0819A22627748500B444B4 /* Moeda.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0819A12627748500B444B4 /* Moeda.swift */; };
@@ -47,6 +50,9 @@
 /* Begin PBXFileReference section */
 		120F8925ED186C18BEBA3E31 /* Pods-ProjetoFinalSquad3Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjetoFinalSquad3Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjetoFinalSquad3Tests/Pods-ProjetoFinalSquad3Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		1C6B441A34FC7EB92685C9EB /* Pods-ProjetoFinalSquad3UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjetoFinalSquad3UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjetoFinalSquad3UITests/Pods-ProjetoFinalSquad3UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		3E8ADBF9262A53D100FE0292 /* FavoritosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritosViewController.swift; sourceTree = "<group>"; };
+		3E8ADBFE262A56D400FE0292 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		3E8ADBFF262A56D400FE0292 /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
 		74DD64FD49466B22CC10C802 /* Pods-ProjetoFinalSquad3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjetoFinalSquad3.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjetoFinalSquad3/Pods-ProjetoFinalSquad3.debug.xcconfig"; sourceTree = "<group>"; };
 		778BF33D15DC09A408C263B3 /* Pods_ProjetoFinalSquad3Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjetoFinalSquad3Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C44B346F9E116FE31BA1274 /* Pods_ProjetoFinalSquad3UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjetoFinalSquad3UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +190,7 @@
 			children = (
 				AA9AF3262628786B00EDBE63 /* MoedasViewController.swift */,
 				AA9AF3532628C1CF00EDBE63 /* DetalhesViewController.swift */,
+				3E8ADBF9262A53D100FE0292 /* FavoritosViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -191,6 +198,8 @@
 		AA6AA60E2625E90400697A7D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3E8ADBFE262A56D400FE0292 /* CustomCollectionViewCell.swift */,
+				3E8ADBFF262A56D400FE0292 /* CustomCollectionViewCell.xib */,
 				AA7FC2E826261459003B7539 /* CustumTableViewCell.swift */,
 				AA7FC2E926261459003B7539 /* CustumTableViewCell.xib */,
 				AA6AA5C92625DF1000697A7D /* LaunchScreen.storyboard */,
@@ -332,6 +341,7 @@
 				AA6AA5CB2625DF1000697A7D /* LaunchScreen.storyboard in Resources */,
 				AA6AA5C82625DF1000697A7D /* Assets.xcassets in Resources */,
 				AA6AA5C32625DF0E00697A7D /* Main.storyboard in Resources */,
+				3E8ADC01262A56D400FE0292 /* CustomCollectionViewCell.xib in Resources */,
 				AA7FC2EB26261459003B7539 /* CustumTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,11 +465,13 @@
 				AA08198E262719CC00B444B4 /* MoedaViewModel.swift in Sources */,
 				AA6AA5C62625DF0E00697A7D /* ProjetoFinalSquad3.xcdatamodeld in Sources */,
 				AA0819A22627748500B444B4 /* Moeda.swift in Sources */,
+				3E8ADBFA262A53D100FE0292 /* FavoritosViewController.swift in Sources */,
 				AA7FC2EA26261459003B7539 /* CustumTableViewCell.swift in Sources */,
 				AA9AF3BA262A0D0E00EDBE63 /* TratamentoRequest.swift in Sources */,
 				AA9AF3272628786B00EDBE63 /* MoedasViewController.swift in Sources */,
 				AA6AA5BC2625DF0E00697A7D /* AppDelegate.swift in Sources */,
 				AA6AA5BE2625DF0E00697A7D /* SceneDelegate.swift in Sources */,
+				3E8ADC00262A56D400FE0292 /* CustomCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
