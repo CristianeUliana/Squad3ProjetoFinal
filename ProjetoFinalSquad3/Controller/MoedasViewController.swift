@@ -57,7 +57,8 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "detalhesMoedaSelecionada") as! DetalhesViewController
         controller.moedaSelecionada = moedaSelecionada
-        self.navigationController?.pushViewController(controller, animated: true)
+        show(controller, sender: self)
+        //self.navigationController?.pushViewController(controller, animated: true)
     }
 
     

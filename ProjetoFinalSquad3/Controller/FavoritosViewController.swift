@@ -52,6 +52,8 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
     
     func recuperaFavoritos() {
         let recuperaFavoritos: NSFetchRequest<Favoritos> = Favoritos.fetchRequest()
+        let ordenaPorNome = NSSortDescriptor(key: "lista", ascending: true)
+        recuperaFavoritos.sortDescriptors = [ordenaPorNome]
         gerenciadorDeResultados = NSFetchedResultsController(fetchRequest: recuperaFavoritos, managedObjectContext: contexto, sectionNameKeyPath: nil, cacheName: nil)
         gerenciadorDeResultados?.delegate = self
         do {

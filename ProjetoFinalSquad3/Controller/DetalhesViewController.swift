@@ -58,6 +58,8 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
     
     func recuperaFavoritos() {
         let recuperaFavoritos: NSFetchRequest<Favoritos> = Favoritos.fetchRequest()
+        let ordenaPorNome = NSSortDescriptor(key: "lista", ascending: true)
+        recuperaFavoritos.sortDescriptors = [ordenaPorNome]
         gerenciadorDeResultados = NSFetchedResultsController(fetchRequest: recuperaFavoritos, managedObjectContext: contexto, sectionNameKeyPath: nil, cacheName: nil)
         gerenciadorDeResultados?.delegate = self
         do {
@@ -76,11 +78,15 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
     
     
     func verificarFavorita(_ sigla: String) {
-        for i in 0...((gerenciadorDeResultados?.fetchedObjects!.count)! - 1) {
-            if gerenciadorDeResultados?.fetchedObjects?[i].lista == sigla {
-                ehFavorita = true
-                indiceFavorita = i
-                break
+        guard let gerenciador = gerenciadorDeResultados?.fetchedObjects else {return}
+        
+        if (gerenciador.count) > 0 {
+            for i in 0...(gerenciador.count - 1) {
+                if gerenciador[i].lista == sigla {
+                    ehFavorita = true
+                    indiceFavorita = i
+                    break
+                }
             }
         }
     }
