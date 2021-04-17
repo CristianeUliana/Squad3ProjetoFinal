@@ -17,7 +17,7 @@ DEPENDENCIES:
   - SwiftLint
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Alamofire
     - AlamofireImage
     - SwiftLint
@@ -34,7 +34,7 @@ CHECKOUT OPTIONS:
     :commit: 6c9c8e120ef79465f7952dcf2c2d4faaafbbf590
     :git: https://github.com/leojportes/Commons.git
   DetalhesMoedas:
-    :commit: b21f0ea735ade94dc0c89a540d8de64e2efab185
+    :commit: 496d1742216d7f6f33ba0ea1441ee5f29c90cf57
     :git: https://github.com/CristianeUliana/DetalhesMoedas.git
 
 SPEC CHECKSUMS:
@@ -46,4 +46,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 23a4bd8501c97260905d6180d8cf745813c54630
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.10.1

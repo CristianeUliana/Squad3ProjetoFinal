@@ -7,7 +7,7 @@ public class DetalhesMoeda: UIView {
     
     // MARK: - Variáveis
 
-    var ehFavorito = false
+    //var ehFavorito = false
     var delegate: DetalhesMoedaDelegate?
     @objc var buttonAction: (() -> Void)?
     
@@ -25,7 +25,7 @@ public class DetalhesMoeda: UIView {
     
     // MARK: - Métodos
     
-    public func makeRequestDetalhes(sigla: String) {
+    public func makeRequestDetalhes(_ sigla: String, _ estrela: String) {
             let newUrl = ApiRest.MoedaDetalhe.replacingOccurrences(of: "@@@", with: sigla)
             let url = URL(string: newUrl)!
             let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -35,7 +35,7 @@ public class DetalhesMoeda: UIView {
                     let moedas = try JSONDecoder().decode(Moeda.self, from: responseData)
                     for moeda in moedas {
                         DispatchQueue.main.async {
-                            self.configuraTela(moeda)
+                            self.configuraTela(moeda, estrela)
                         }
                     }
                 } catch let error {
@@ -45,24 +45,28 @@ public class DetalhesMoeda: UIView {
             task.resume()
         }
 
-    public func verificarFavoritos(_ favoritos: String, _ sigla: Substring,_ estrela: String) {
-            let listaDeFavoritos = favoritos.split(separator: "|")
-            if listaDeFavoritos.contains(sigla) {
-                ehFavorito = true
-                configurarButton(ActionButton.Remover)
-                favoritoImage.image = UIImage(named: estrela)
-            } else {
-                configurarButton(ActionButton.Adicionar)
-            }
+    public func verificarFavoritos(_ ehFavorita: Bool) {
+//            let listaDeFavoritos = favoritos.split(separator: "|")
+            //if listaDeFavoritos.contains(sigla) {
+        if ehFavorita {
+                //ehFavorito = true
+            configurarButton(ActionButton.Remover)
+            favoritoImage.isHidden = false
+            //favoritoImage.image = UIImage(named: estrela)
+        } else {
+            configurarButton(ActionButton.Adicionar)
+            favoritoImage.isHidden = true
         }
+    }
 
-    func configuraTela(_ moeda: MoedaElement) {
+    func configuraTela(_ moeda: MoedaElement, _ estrela: String) {
         viewSup.backgroundColor = HeaderCores.headerColor
         siglaMoedaLabel.text = moeda.assetID
         valorMoedaLabel.text = moeda.priceUsd.formatador()
         valorHoraLabel.text = moeda.volume1HrsUsd.formatador()
         valorMesLabel.text = moeda.volume1DayUsd.formatador()
         valorAnoLabel.text = moeda.volume1MthUsd.formatador()
+        favoritoImage.image = UIImage(named: estrela)
         let caminhoIcon = moeda.idIcon
         let id = caminhoIcon.replacingOccurrences(of: "-", with: "")
         let url = ApiRest.UrlIcon.replacingOccurrences(of: "@@@", with: id)

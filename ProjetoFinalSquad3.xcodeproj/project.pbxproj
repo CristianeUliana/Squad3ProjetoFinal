@@ -383,14 +383,14 @@
 		};
 		AA6AA5FD2625E3CB00697A7D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n${PODS_ROOT}/SwiftLint/swiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
@@ -417,23 +417,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ProjetoFinalSquad3/Pods-ProjetoFinalSquad3-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
-				"${BUILT_PRODUCTS_DIR}/Commons/Commons.framework",
-				"${BUILT_PRODUCTS_DIR}/DetalhesMoedas/DetalhesMoedas.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ProjetoFinalSquad3/Pods-ProjetoFinalSquad3-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Commons.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DetalhesMoedas.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ProjetoFinalSquad3/Pods-ProjetoFinalSquad3-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ProjetoFinalSquad3/Pods-ProjetoFinalSquad3-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ProjetoFinalSquad3/Pods-ProjetoFinalSquad3-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F98DBD83E98E8E64536F8A75 /* [CP] Check Pods Manifest.lock */ = {

@@ -20,11 +20,6 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: - Selecao de Atributos da Classe
 
     var listaDeMoedas:[Criptomoeda] = []
-    
-  
-    var moedasFavoritas: Favoritos?
-    var listaDeFavoritos: [Substring] = ["BTC","LTC"]
-    var listaRecarregada: [Criptomoeda] = []
 
     
     // MARK: - Ciclo de Vida
@@ -37,13 +32,11 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func viewWillAppear(_ animated: Bool) {
-       // listaDeFavoritos = verificarFavoritos()
-        makeRequest{ (resultados) in
+        makeRequest{ (_) in
             DispatchQueue.main.async {
                 self.listaMoedas.reloadData()
             }
         }
-       //recuperaDados(listaFavoritos: listaDeFavoritos)
     }
     
     // MARK: - TableView
@@ -52,12 +45,19 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return self.listaDeMoedas.count
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustumTableViewCell", for: indexPath) as! CustumTableViewCell
         let moedaAtual = listaDeMoedas[indexPath.row]
         cell.configuraCelula(moedaAtual)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let moedaSelecionada = listaDeMoedas[indexPath.item]
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "detalhesMoedaSelecionada") as! DetalhesViewController
+        controller.moedaSelecionada = moedaSelecionada
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 
     
@@ -86,18 +86,4 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         task.resume()
     }
-    
-    
-    // MARK: - Funções
-    
-//    func verificarFavoritos() -> [Substring] {
-//        guard let favoritos = moedasFavoritas?.lista else {return []}
-//        let listaDeFavoritos = favoritos.split(separator: "|")
-//        return listaDeFavoritos
-//    }
-//  
-//
-//    
-//    
-    
 }
