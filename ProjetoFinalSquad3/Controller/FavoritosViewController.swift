@@ -7,8 +7,9 @@
 
 import UIKit
 import Commons
+import CoreData
 
-class FavoritosViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class FavoritosViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, NSFetchedResultsControllerDelegate {
  
     
     
@@ -19,12 +20,19 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
     
     // MARK: - Variáveis
     
-    var moedasFavoritas: Favoritos?
-    var listaDeFavoritos: [Substring] = ["BTC","LTC"]
+    var listaSiglasFavoritas: [String] = []
+   
     var listaMoedasFavoritas: [Criptomoeda] = []
     
+    var contexto: NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+    }
     
-    var listaTeste: [String] = ["BTC","LTC"]
+    var gerenciadorDeResultados:NSFetchedResultsController<Favoritos>?
+    
+    
+    
     
     // MARK: - Ciclo de Vida
 
@@ -33,25 +41,41 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
         self.myCollection.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
         self.myCollection.delegate = self
         self.myCollection.dataSource = self
-       // listaDeFavoritos = verificarFavoritos()
+        verificarFavoritas()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        recuperaDados(listaDeFavoritos)
+        recuperaDados(listaSiglasFavoritas)
         
     }
     
+    
+    func recuperaFavoritos() {
+        let recuperaFavoritos: NSFetchRequest<Favoritos> = Favoritos.fetchRequest()
+        gerenciadorDeResultados = NSFetchedResultsController(fetchRequest: recuperaFavoritos, managedObjectContext: contexto, sectionNameKeyPath: nil, cacheName: nil)
+        gerenciadorDeResultados?.delegate = self
+        do {
+            try gerenciadorDeResultados?.performFetch()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    
+    func verificarFavoritas() {
+        //guard let gerenciadorDeResultados = gerenciadorDeResultados else {return}
+        if gerenciadorDeResultados?.fetchedObjects?.count != nil {
+            for i in 0...(((gerenciadorDeResultados?.fetchedObjects!.count)!) - 1) {
+                guard let sigla = gerenciadorDeResultados?.fetchedObjects?[i].lista else {return}
+                listaSiglasFavoritas.append(sigla)
+            }
+        }
+    }
 
-//    func verificarFavoritos() -> [Substring] {
-//        guard let favoritos = moedasFavoritas?.lista else {return []}
-//        let listaDeFavoritos = favoritos.split(separator: "|")
-//        return listaDeFavoritos
-//    }
 
-
-    func recuperaDados(_ listaFavoritos: [Substring]) {
-        for sigla in listaFavoritos {
-            makeRequestBySigla(String(sigla)) { (resultado) in
+    func recuperaDados(_ listaSiglasFavoritas: [String]) {
+        for sigla in listaSiglasFavoritas {
+            makeRequestBySigla(sigla) { (resultado) in
                 self.setupUI(resultado)
             }
         }
