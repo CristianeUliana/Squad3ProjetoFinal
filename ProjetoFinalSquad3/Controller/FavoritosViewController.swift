@@ -37,7 +37,8 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //recuperaDados(listaDeFavoritos)
+        recuperaDados(listaDeFavoritos)
+        
     }
     
 
@@ -47,64 +48,62 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
 //        return listaDeFavoritos
 //    }
 
-//
-//    func recuperaDados(_ listaFavoritos: [Substring]) {
-//
-//        for sigla in listaFavoritos {
-//            makeRequestBySigla(String(sigla)) { (listaMoedasFavoritas) in
-//                DispatchQueue.main.async {
-//                    self.myCollection.reloadData()
-//                }
-//            }
-//        }
-//    }
-//
-//
-//    func makeRequestBySigla(_ sigla: String, completion: @escaping([Criptomoeda]) -> Void) {
-//        let newUrl = ApiRest.MoedaDetalhe.replacingOccurrences(of: "@@@", with: sigla)
-//        let url = URL(string: newUrl)!
-//        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-//            print(response as Any)
-//            guard let responseData = data else { return }
-//            do {
-//                let moedas = try JSONDecoder().decode(Moedas.self, from: responseData)
-//                for moeda in moedas {
-//                    guard let nome = moeda.name else {return}
-//                    guard let valor = moeda.priceUsd else {return}
-//                    guard let imagem = moeda.idIcon else {return}
-//                    let criptoMoeda = Criptomoeda(sigla: sigla, nome: nome, valor: valor, imagem: imagem)
-//                    self.listaMoedasFavoritas.append(criptoMoeda)
-//                }
-//                completion(self.listaMoedasFavoritas)
-//
-//            } catch let error {
-//                print("error: \(error)")
-//            }
-//        }
-//        task.resume()
-//    }
-//
-//
+
+    func recuperaDados(_ listaFavoritos: [Substring]) {
+        for sigla in listaFavoritos {
+            makeRequestBySigla(String(sigla)) { (resultado) in
+                self.setupUI(resultado)
+            }
+        }
+    }
+
+
+    func makeRequestBySigla(_ sigla: String, completion: @escaping(Criptomoeda) -> Void) {
+        let newUrl = ApiRest.MoedaDetalhe.replacingOccurrences(of: "@@@", with: sigla)
+        let url = URL(string: newUrl)!
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            print(response as Any)
+            guard let responseData = data else { return }
+            do {
+                let moedas = try JSONDecoder().decode(Moedas.self, from: responseData)
+                for moeda in moedas {
+                    guard let nome = moeda.name else {return}
+                    guard let valor = moeda.priceUsd else {return}
+                    guard let imagem = moeda.idIcon else {return}
+                    let criptoMoeda = Criptomoeda(sigla: sigla, nome: nome, valor: valor, imagem: imagem)
+                    
+                    completion(criptoMoeda)
+                   // self.listaMoedasFavoritas.append(criptoMoeda)
+                }
+            } catch let error {
+                print("error: \(error)")
+            }
+        }
+        task.resume()
+    }
+
+    
+    func setupUI(_ moeda: Criptomoeda){
+        self.listaMoedasFavoritas.append(moeda)
+            DispatchQueue.main.async {
+                self.myCollection.reloadData()
+            }
+    }
+    
+
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return listaTeste.count
+        return listaMoedasFavoritas.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let celulaFavorita = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
-        //let moedaAtual = listaMoedasFavoritas[indexPath.item]
-        
-        //let moedaAtual = listaTeste[indexPath.item]
-        
-        celulaFavorita.backgroundColor = .blue
-        //celulaFavorita.configuraCelula(moedaAtual)
-        
+        let moedaAtual = listaMoedasFavoritas[indexPath.item]
+        celulaFavorita.configuraCelula(moedaAtual)
         return celulaFavorita
     }
- 
     
-    
-    
- 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return UIDevice.current.userInterfaceIdiom == .phone ? CGSize(width: collectionView.bounds.width/2-10, height: 210) : CGSize(width: collectionView.bounds.width/3-20, height: 300)
+    }
 }

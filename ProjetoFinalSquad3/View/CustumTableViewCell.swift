@@ -34,6 +34,7 @@ class CustumTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    
     func configuraCelula(_ moeda: Criptomoeda) {
         bitcoinLabel.text = moeda.nome
         siglaLabel.text = moeda.sigla

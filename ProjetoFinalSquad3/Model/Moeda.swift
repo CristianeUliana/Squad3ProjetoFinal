@@ -4,15 +4,10 @@
 struct Moeda: Codable {
 
     let assetID, name: String?
-
     let typeIsCrypto: Int?
-
     let dataStart, dataEnd, dataQuoteStart, dataQuoteEnd: String?
-
     let dataOrderbookStart, dataOrderbookEnd, dataTradeStart, dataTradeEnd: String?
-
     let dataSymbolsCount: Int?
-
     let volume1HrsUsd, volume1DayUsd, volume1MthUsd: Double?
 
     // atentar porque a API pode mudar o tipo desse atributo - Estava como Int, agora está como Double
