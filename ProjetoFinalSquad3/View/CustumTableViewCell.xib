@@ -25,7 +25,7 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="estrela" translatesAutoresizingMaskIntoConstraints="NO" id="U2I-jt-9sa">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U2I-jt-9sa">
                         <rect key="frame" x="210" y="20" width="23" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="NtY-On-Vwv"/>
@@ -78,7 +78,4 @@
             <point key="canvasLocation" x="-92.028985507246389" y="70.108695652173921"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="estrela" width="656" height="698"/>
-    </resources>
 </document>

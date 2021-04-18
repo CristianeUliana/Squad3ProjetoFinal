@@ -9,9 +9,10 @@ import UIKit
 import Commons
 import AlamofireImage
 import DetalhesMoedas
+import CoreData
 
 
-class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
      // MARK: - Outlets
     
@@ -20,6 +21,16 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: - Selecao de Atributos da Classe
 
     var listaDeMoedas:[Criptomoeda] = []
+    
+    var listaSiglasFavoritas: [String] = []
+    
+    var contexto: NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+    }
+    
+    var gerenciadorDeResultados:NSFetchedResultsController<Favoritos>?
+    
 
     
     // MARK: - Ciclo de Vida
@@ -48,7 +59,14 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustumTableViewCell", for: indexPath) as! CustumTableViewCell
         let moedaAtual = listaDeMoedas[indexPath.row]
-        cell.configuraCelula(moedaAtual)
+        guard let gerenciador = gerenciadorDeResultados?.fetchedObjects else {return cell}
+        if gerenciador.count > 0 {
+            for i in 0...(((gerenciadorDeResultados?.fetchedObjects!.count)!) - 1) {
+                guard let sigla = gerenciador[i].lista else {return cell}
+                listaSiglasFavoritas.append(sigla)
+            }
+        }
+        cell.configuraCelula(listaSiglasFavoritas, moedaAtual)
         return cell
     }
     
@@ -86,5 +104,21 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
             }
         task.resume()
+    }
+    
+    
+    // MARK: - Funções
+    
+    func recuperaFavoritos() {
+        let recuperaFavoritos: NSFetchRequest<Favoritos> = Favoritos.fetchRequest()
+        let ordenaPorNome = NSSortDescriptor(key: "lista", ascending: true)
+        recuperaFavoritos.sortDescriptors = [ordenaPorNome]
+        gerenciadorDeResultados = NSFetchedResultsController(fetchRequest: recuperaFavoritos, managedObjectContext: contexto, sectionNameKeyPath: nil, cacheName: nil)
+        gerenciadorDeResultados?.delegate = self
+        do {
+            try gerenciadorDeResultados?.performFetch()
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }

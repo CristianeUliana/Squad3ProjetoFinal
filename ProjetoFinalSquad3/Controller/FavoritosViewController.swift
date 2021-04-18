@@ -46,7 +46,6 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
     
     override func viewWillAppear(_ animated: Bool) {
         recuperaDados(listaSiglasFavoritas)
-        
     }
     
     
