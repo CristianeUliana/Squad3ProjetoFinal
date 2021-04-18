@@ -49,8 +49,9 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
     
     override func viewWillAppear(_ animated: Bool) {
         guard let sigla = sigla else {return}
-        detalhes.makeRequestDetalhes(sigla, "estrela")
+        detalhes.makeRequestDetalhes(sigla, "estrelaDetalhes")
         detalhes.verificarFavoritos(ehFavorita)
+        detalhes.setupUI(moedaDelegate: self)
     }
     
     
@@ -79,7 +80,6 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
     
     func verificarFavorita(_ sigla: String) {
         guard let gerenciador = gerenciadorDeResultados?.fetchedObjects else {return}
-        
         if (gerenciador.count) > 0 {
             for i in 0...(gerenciador.count - 1) {
                 if gerenciador[i].lista == sigla {
@@ -93,27 +93,33 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
  
     
     public func buttonAction() {
+        print("botão")
         if ehFavorita == false {
             if moedaFavorita == nil {
                 moedaFavorita = Favoritos(context: contexto)
             }
             moedaFavorita?.lista = sigla
+            ehFavorita = true
+            detalhes.verificarFavoritos(ehFavorita)
             do {
                 try contexto.save()
                 } catch {
                     print(error.localizedDescription)
                 }
         } else {
+            guard let sigla = sigla else {return}
+            verificarFavorita(sigla)
             guard let indice = indiceFavorita else {return}
             guard let moedaSelecionada = gerenciadorDeResultados?.fetchedObjects![indice] else {return}
             contexto.delete(moedaSelecionada)
+            ehFavorita = false
+            detalhes.verificarFavoritos(ehFavorita)
             do {
                 try contexto.save()
             } catch {
                 print(error.localizedDescription)
             }
         }
-        detalhes.verificarFavoritos(ehFavorita)
     }
     
 
