@@ -51,8 +51,9 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
         }
     }
     
-    
+
     // MARK: - Funções
+
     
     func recuperaFavoritos() {
         let recuperaFavoritos: NSFetchRequest<Favoritos> = Favoritos.fetchRequest()
