@@ -38,7 +38,7 @@ class CustumTableViewCell: UITableViewCell {
     func configuraCelula(_ listaSiglasFavoritas: [String], _ moeda: Criptomoeda) {
         bitcoinLabel.text = moeda.nome
         siglaLabel.text = moeda.sigla
-        cotacaoLabel.text = String(moeda.valor)
+        cotacaoLabel.text = String(moeda.valor.formatador())
         imagemDeFavoritos.image = UIImage(named: "estrelaLista")
         let caminhoIcon = moeda.imagem
         let id = caminhoIcon.replacingOccurrences(of: "-", with: "")
@@ -57,3 +57,19 @@ class CustumTableViewCell: UITableViewCell {
     }
     
 }
+
+//
+//func configuraTela(_ moeda: MoedaElement, _ estrela: String) {
+//    viewSup.backgroundColor = HeaderCores.headerColor
+//    siglaMoedaLabel.text = moeda.assetID
+//    valorMoedaLabel.text = moeda.priceUsd.formatador()
+//    valorHoraLabel.text = moeda.volume1HrsUsd.formatador()
+//    valorMesLabel.text = moeda.volume1DayUsd.formatador()
+//    valorAnoLabel.text = moeda.volume1MthUsd.formatador()
+//    favoritoImage.image = UIImage(named: estrela)
+//    let caminhoIcon = moeda.idIcon
+//    let id = caminhoIcon.replacingOccurrences(of: "-", with: "")
+//    let url = ApiRest.UrlIcon.replacingOccurrences(of: "@@@", with: id)
+//    guard let urlCompleta = URL(string: url) else {return}
+//    moedaImage.af.setImage(withURL: urlCompleta)
+//}

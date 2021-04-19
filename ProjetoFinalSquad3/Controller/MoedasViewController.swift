@@ -15,6 +15,8 @@ import CoreData
 class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UISearchBarDelegate {
     
      // MARK: - Outlets
+   
+    @IBOutlet weak var dataLabel: UILabel!
     
     @IBOutlet weak var listaMoedas: UITableView!
     @IBOutlet weak var pesquisarMoeda: UISearchBar!
@@ -44,6 +46,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.listaMoedas.delegate = self
         self.listaMoedas.dataSource = self
         self.pesquisarMoeda.delegate = self
+        dataLabel.text = mostrarDataAtual()
     }
     
     override func viewWillAppear(_ animated: Bool) {
