@@ -35,17 +35,30 @@ class CustumTableViewCell: UITableViewCell {
     }
     
     
-    func configuraCelula(_ listaSiglasFavoritas: [String], _ moeda: Criptomoeda) {
+    func configuraCelula(_ moeda: Criptomoeda) {
         bitcoinLabel.text = moeda.nome
         siglaLabel.text = moeda.sigla
         cotacaoLabel.text = String(moeda.valor.formatador())
-        imagemDeFavoritos.image = UIImage(named: "estrelaLista")
+        //imagemDeFavoritos.image = UIImage(named: "estrelaLista")
         let caminhoIcon = moeda.imagem
         let id = caminhoIcon.replacingOccurrences(of: "-", with: "")
         let url = ApiRest.UrlIcon.replacingOccurrences(of: "@@@", with: id)
         guard let urlCompleta = URL(string: url) else {return}
         imagemCriptomoeda.af.setImage(withURL: urlCompleta)
         
+//        if listaSiglasFavoritas.count == 0 {
+//            imagemDeFavoritos.isHidden = true
+//        } else if listaSiglasFavoritas.contains(moeda.sigla) {
+//            imagemDeFavoritos.isHidden = false
+//        } else {
+//            imagemDeFavoritos.isHidden = true
+//        }
+        
+    }
+    
+    
+    func colocaEstrela(_ listaSiglasFavoritas: [String], _ moeda: Criptomoeda) {
+        imagemDeFavoritos.image = UIImage(named: "estrelaLista")
         if listaSiglasFavoritas.count == 0 {
             imagemDeFavoritos.isHidden = true
         } else if listaSiglasFavoritas.contains(moeda.sigla) {
@@ -53,7 +66,6 @@ class CustumTableViewCell: UITableViewCell {
         } else {
             imagemDeFavoritos.isHidden = true
         }
-        
     }
     
 }

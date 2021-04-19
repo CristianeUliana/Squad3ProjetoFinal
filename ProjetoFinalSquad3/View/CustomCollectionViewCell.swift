@@ -37,4 +37,5 @@ class CustomCollectionViewCell: UICollectionViewCell {
         guard let urlCompleta = URL(string: url) else {return}
         //imagemMoeda.af.setImage(withURL: urlCompleta)
     }
+    
 }

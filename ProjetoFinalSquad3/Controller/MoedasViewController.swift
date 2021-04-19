@@ -47,6 +47,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.listaMoedas.dataSource = self
         self.pesquisarMoeda.delegate = self
         dataLabel.text = mostrarDataAtual()
+        recuperaFavoritos()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,7 +71,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustumTableViewCell", for: indexPath) as! CustumTableViewCell
         let moedaAtual = listaDePesquisa[indexPath.row]
-        cell.configuraCelula(listaSiglasFavoritas, moedaAtual)
+        cell.configuraCelula(moedaAtual)
         guard let gerenciador = gerenciadorDeResultados?.fetchedObjects else {return cell}
         if gerenciador.count > 0 {
             for i in 0...(((gerenciadorDeResultados?.fetchedObjects!.count)!) - 1) {
@@ -78,7 +79,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 listaSiglasFavoritas.append(sigla)
             }
         }
-        cell.configuraCelula(listaSiglasFavoritas, moedaAtual)
+        cell.colocaEstrela(listaSiglasFavoritas, moedaAtual)
         return cell
     }
     
