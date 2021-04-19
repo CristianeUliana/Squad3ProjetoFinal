@@ -40,11 +40,12 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
         self.myCollection.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
         self.myCollection.delegate = self
         self.myCollection.dataSource = self
-        recuperaFavoritos()
+       // recuperaFavoritos()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         listaSiglasFavoritas = []
+        listaMoedasFavoritas = []
         verificarFavoritas { (resultado) in
             self.recuperaDados(resultado)
         }
@@ -67,7 +68,7 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
     
     
     func verificarFavoritas(completion: @escaping([String]) -> Void) {
-        //recuperaFavoritos()
+        recuperaFavoritos()
         guard  let numeroMoedasFavoritas = gerenciadorDeResultados?.fetchedObjects?.count else { return }
         if numeroMoedasFavoritas > 0 {
             for i in 0...(((gerenciadorDeResultados?.fetchedObjects!.count)!) - 1) {
