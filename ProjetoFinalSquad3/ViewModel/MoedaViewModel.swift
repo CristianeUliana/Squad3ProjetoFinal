@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Criptomoeda{
+struct Criptomoeda {
     
     let sigla: String
     let nome: String

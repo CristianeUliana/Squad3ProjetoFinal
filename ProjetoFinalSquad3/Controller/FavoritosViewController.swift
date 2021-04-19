@@ -41,12 +41,12 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
         self.myCollection.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
         self.myCollection.delegate = self
         self.myCollection.dataSource = self
-        verificarFavoritas()
+        
+        verificarFavoritas { (resultado) in
+            self.recuperaDados(resultado)
+        }
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        recuperaDados(listaSiglasFavoritas)
-    }
+
     
     
     func recuperaFavoritos() {
@@ -63,13 +63,14 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     
-    func verificarFavoritas() {
-        //guard let gerenciadorDeResultados = gerenciadorDeResultados else {return}
+    func verificarFavoritas(completion: @escaping([String]) -> Void) {
+        recuperaFavoritos()
         if gerenciadorDeResultados?.fetchedObjects?.count != nil {
             for i in 0...(((gerenciadorDeResultados?.fetchedObjects!.count)!) - 1) {
                 guard let sigla = gerenciadorDeResultados?.fetchedObjects?[i].lista else {return}
                 listaSiglasFavoritas.append(sigla)
             }
+            completion(listaSiglasFavoritas)
         }
     }
 

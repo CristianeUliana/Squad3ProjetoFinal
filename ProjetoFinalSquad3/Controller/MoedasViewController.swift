@@ -12,15 +12,18 @@ import DetalhesMoedas
 import CoreData
 
 
-class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UISearchBarDelegate {
     
      // MARK: - Outlets
     
     @IBOutlet weak var listaMoedas: UITableView!
+    @IBOutlet weak var pesquisarMoeda: UISearchBar!
     
     // MARK: - Selecao de Atributos da Classe
 
     var listaDeMoedas:[Criptomoeda] = []
+    
+    var listaDePesquisa:[Criptomoeda] = []
     
     var listaSiglasFavoritas: [String] = []
     
@@ -40,10 +43,13 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.listaMoedas.register(UINib(nibName: "CustumTableViewCell", bundle: nil), forCellReuseIdentifier: "CustumTableViewCell")
         self.listaMoedas.delegate = self
         self.listaMoedas.dataSource = self
+        self.pesquisarMoeda.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        makeRequest{ (_) in
+        makeRequest{ (listaDeMoedas) in
+            self.listaDeMoedas = listaDeMoedas
+            self.listaDePesquisa = self.listaDeMoedas
             DispatchQueue.main.async {
                 self.listaMoedas.reloadData()
             }
@@ -53,12 +59,13 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: - TableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.listaDeMoedas.count
+        return self.listaDePesquisa.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustumTableViewCell", for: indexPath) as! CustumTableViewCell
-        let moedaAtual = listaDeMoedas[indexPath.row]
+        let moedaAtual = listaDePesquisa[indexPath.row]
+        cell.configuraCelula(listaSiglasFavoritas, moedaAtual)
         guard let gerenciador = gerenciadorDeResultados?.fetchedObjects else {return cell}
         if gerenciador.count > 0 {
             for i in 0...(((gerenciadorDeResultados?.fetchedObjects!.count)!) - 1) {
@@ -71,7 +78,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let moedaSelecionada = listaDeMoedas[indexPath.item]
+        let moedaSelecionada = listaDePesquisa[indexPath.item]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "detalhesMoedaSelecionada") as! DetalhesViewController
         controller.moedaSelecionada = moedaSelecionada
@@ -84,6 +91,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func makeRequest(completion:@escaping([Criptomoeda]) -> Void) {
         let url = URL(string: ApiRest.TodasAsMoedas)!
+//        let url = URL(string: "https://6076e5cf1ed0ae0017d6a02f.mockapi.io/api/v1/users")!
             let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
                 print(response as Any)
                 guard let responseData = data else { return }
@@ -91,15 +99,23 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     let moedas = try JSONDecoder().decode(Moedas.self, from: responseData)
                     for i in 0...5 {
                         var moedaFiltrada = moedas.filter {$0.typeIsCrypto == 1 && $0.priceUsd ?? 0>0 && (($0.idIcon?.isEmpty) != nil)}
+                        
+                        print(moedaFiltrada)
                         guard let sigla = moedaFiltrada[i].assetID else {return}
                         guard let nome = moedaFiltrada[i].name else {return}
                         guard let valor = moedaFiltrada[i].priceUsd else {return}
                         guard let idIcon = moedaFiltrada[i].idIcon else {return}
                         let criptomoeda = Criptomoeda(sigla: sigla, nome: nome, valor: valor, imagem: idIcon)
                         self.listaDeMoedas.append(criptomoeda)
+                        
+                        print(self.listaDeMoedas)
                      }
                     completion(self.listaDeMoedas)
                 } catch let error {
+                    //chamar função de tratamento passando error como parâmetro:
+                    guard let httpResponse = response as? HTTPURLResponse else {return}
+                    
+                    self.tratarErros(httpResponse)
                     print("error: \(error)")
                 }
             }
@@ -120,5 +136,43 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+    func tratarErros(_ erro: HTTPURLResponse) {
+        let resposta = erro.statusCode
+        switch resposta {
+            case 400:
+                self.alertaDoWindow(titulo: "Erro 400: Bad Request", message: "Falha na requisição dos dados, sintaxe invalida!")
+            case 401:
+                self.alertaDoWindow(titulo: "Erro 401: Unauthorized", message: "Falha na requisição dos dados, autenticação inválida!")
+            case 403:
+                self.alertaDoWindow(titulo: "Erro 403: Forbidden", message: "Falha na requisição dos dados, sem permissão para acesso!")
+            case 429:
+                self.alertaDoWindow(titulo: "Erro 429: Too Many Requests", message: "Falha na requisição dos dados, quantidade de requisição excedida!")
+            case 550:
+                self.alertaDoWindow(titulo: "Erro 550: No Data", message: "Requisição sem dados!")
+            default:
+                break
+          }
+    }
+    
+    func alertaDoWindow(titulo: String, message: String) {
+        let alerta = UIAlertController(title: titulo, message: message, preferredStyle: .alert)
+        let botaoOk = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alerta.addAction(botaoOk)
+        alerta.present(alerta, animated: true, completion: nil)
+    }
+    
+    
+    // MARK: - SearchBar
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        listaDePesquisa = listaDeMoedas
+        if searchText != "" {
+            let textoPesquisado = searchText
+            let moedasFiltradas = listaDePesquisa.filter { $0.nome.range(of: textoPesquisado, options: [.caseInsensitive]) != nil }
+            listaDePesquisa = moedasFiltradas
+        }
+      listaMoedas.reloadData()
     }
 }

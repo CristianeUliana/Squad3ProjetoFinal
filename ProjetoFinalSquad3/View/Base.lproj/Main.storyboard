@@ -86,6 +86,7 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="listaMoedas" destination="2dW-op-n6m" id="r5A-JI-U2e"/>
+                        <outlet property="pesquisarMoeda" destination="oA2-HQ-neg" id="WRz-rJ-6G7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -125,7 +126,7 @@
         <scene sceneID="hwh-FU-wfF">
             <objects>
                 <viewController id="MtG-39-Tyf" customClass="FavoritosViewController" customModule="ProjetoFinalSquad3" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ezC-48-Rc4" customClass="Teste" customModule="ModFavoritos" customModuleProvider="target">
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ezC-48-Rc4" customClass="Teste" customModule="ProjetoFinalSquad3" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

@@ -121,17 +121,4 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
             }
         }
     }
-    
-
-    
-//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-//   //        switch type {
-//   //        case .delete:
-//   //            guard let indexPath = indexPath else {return}
-//   //
-//   //            break
-//   //        default:
-//   //
-//   //        }
-//       }
 }
