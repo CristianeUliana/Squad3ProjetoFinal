@@ -16,6 +16,7 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
     // MARK: - Outlets
 
     @IBOutlet weak var myCollection: UICollectionView!
+    @IBOutlet weak var dataLabel: UILabel!
     
     
     // MARK: - Variáveis
@@ -32,8 +33,6 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
     var gerenciadorDeResultados:NSFetchedResultsController<Favoritos>?
     
     
-    
-    
     // MARK: - Ciclo de Vida
 
     override func viewDidLoad() {
@@ -41,7 +40,11 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
         self.myCollection.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
         self.myCollection.delegate = self
         self.myCollection.dataSource = self
-        
+        recuperaFavoritos()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        listaSiglasFavoritas = []
         verificarFavoritas { (resultado) in
             self.recuperaDados(resultado)
         }
@@ -64,14 +67,15 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
     
     
     func verificarFavoritas(completion: @escaping([String]) -> Void) {
-        recuperaFavoritos()
-        if gerenciadorDeResultados?.fetchedObjects?.count != nil {
+        //recuperaFavoritos()
+        guard  let numeroMoedasFavoritas = gerenciadorDeResultados?.fetchedObjects?.count else { return }
+        if numeroMoedasFavoritas > 0 {
             for i in 0...(((gerenciadorDeResultados?.fetchedObjects!.count)!) - 1) {
                 guard let sigla = gerenciadorDeResultados?.fetchedObjects?[i].lista else {return}
                 listaSiglasFavoritas.append(sigla)
             }
-            completion(listaSiglasFavoritas)
         }
+        completion(listaSiglasFavoritas)
     }
 
 
@@ -131,5 +135,13 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return UIDevice.current.userInterfaceIdiom == .phone ? CGSize(width: collectionView.bounds.width/2-10, height: 210) : CGSize(width: collectionView.bounds.width/3-20, height: 300)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let moedaSelecionada = listaMoedasFavoritas[indexPath.item]
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "detalhesMoedaSelecionada") as! DetalhesViewController
+        controller.moedaSelecionada = moedaSelecionada
+        show(controller, sender: self)
     }
 }

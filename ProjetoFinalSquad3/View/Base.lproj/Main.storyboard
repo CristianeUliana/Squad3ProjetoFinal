@@ -185,6 +185,7 @@
                         <imageReference key="selectedImage" image="book" catalog="system" renderingMode="original"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="dataLabel" destination="b6u-h0-LzD" id="t8D-bu-uBV"/>
                         <outlet property="myCollection" destination="9BW-fb-9iv" id="8Fz-1q-ueA"/>
                     </connections>
                 </viewController>
