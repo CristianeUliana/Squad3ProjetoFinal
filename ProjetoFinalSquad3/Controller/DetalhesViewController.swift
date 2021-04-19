@@ -45,6 +45,11 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
         telaDetalhes.addSubview(detalhes)
         recuperaFavoritos()
         sigla = verificarMoeda()
+//        botoesMenu()
+        
+        
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +58,33 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
         detalhes.verificarFavoritos(ehFavorita)
         detalhes.setupUI(moedaDelegate: self)
     }
+    
+    // tentativa de colocar botoes de menu
+//    @objc func botoesMenu(){
+//        let tabBarBotoes = UITabBarController()
+//        tabBarBotoes.setViewControllers([], animated: false)
+//
+//        let botaoMoeda = MoedasViewController()
+//        let botaoFavoritos = FavoritosViewController()
+//
+//        botaoMoeda.title = "Moeda"
+//        botaoFavoritos.title = "Favoritos"
+//
+//        tabBarBotoes.setViewControllers([botaoMoeda, botaoFavoritos], animated: false)
+//
+//        guard let itens = tabBarBotoes.tabBar.items else{return}
+//
+//        let imagens = ["moedas.png","favoritos.png"]
+//
+//
+//        for x in 0..<itens.count {
+//            itens[x].image = UIImage(systemName: imagens[x])
+//        }
+//
+//        tabBarBotoes.modalPresentationStyle = .fullScreen
+//        present(tabBarBotoes, animated: true)
+//
+//    }
     
     
     // MARK: - Métodos

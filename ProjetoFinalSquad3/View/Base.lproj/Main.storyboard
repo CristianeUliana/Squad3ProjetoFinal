@@ -36,7 +36,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" placeholder="Search" id="oA2-HQ-neg">
-                                                <rect key="frame" x="0.0" y="59.333333333333343" width="414" height="56"/>
+                                                <rect key="frame" x="0.0" y="59" width="414" height="56"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -93,16 +93,16 @@
             </objects>
             <point key="canvasLocation" x="140.57971014492756" y="116.57608695652175"/>
         </scene>
-        <!--Detalhes View Controller-->
+        <!--Moedas-->
         <scene sceneID="jSs-lf-bQ5">
             <objects>
                 <viewController storyboardIdentifier="detalhesMoedaSelecionada" id="J66-4y-L1v" customClass="DetalhesViewController" customModule="ProjetoFinalSquad3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wXL-Lo-iDG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="THk-GU-Qwz">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="667"/>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gO2-Et-gp0"/>
@@ -114,10 +114,12 @@
                             <constraint firstItem="THk-GU-Qwz" firstAttribute="leading" secondItem="gO2-Et-gp0" secondAttribute="leading" id="yIC-eE-eUV"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" enabled="NO" title="" id="tyJ-2d-Iei">
+                    <tabBarItem key="tabBarItem" title="Moedas" image="moedas" selectedImage="moedas" id="gBD-FJ-4FG">
                         <color key="badgeColor" systemColor="systemBlueColor"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="DHn-aC-sTG"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="telaDetalhes" destination="THk-GU-Qwz" id="awu-JB-bPa"/>
                     </connections>
@@ -213,7 +215,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="flC-Rg-1pw"/>
                         <segue destination="MtG-39-Tyf" kind="relationship" relationship="viewControllers" id="4cu-Mb-qsP"/>
-                        <segue destination="J66-4y-L1v" kind="relationship" relationship="viewControllers" id="YRX-Nr-US7"/>
+                        <segue destination="J66-4y-L1v" kind="show" id="JYm-45-tAX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mDI-ma-Kq2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
