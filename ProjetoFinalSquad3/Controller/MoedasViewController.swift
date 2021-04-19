@@ -95,6 +95,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func makeRequest(completion:@escaping([Criptomoeda]) -> Void) {
 
+
 //        let url = URL(string: ApiRest.TodasAsMoedas)!
         let url = URL(string: "https://rest.coinapi.io/v1/assets?apikey=1F8A5E86-F1C9-41C7-B8BB-9DB1B81FDE7C")!
         //let url = URL(string: "https://6076e5cf1ed0ae0017d6a02f.mockapi.io/api/v1/users")!
