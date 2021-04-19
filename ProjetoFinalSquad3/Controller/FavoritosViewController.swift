@@ -40,6 +40,7 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
         self.myCollection.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
         self.myCollection.delegate = self
         self.myCollection.dataSource = self
+        dataLabel.text = mostrarDataAtual()
        // recuperaFavoritos()
     }
     
@@ -90,7 +91,8 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
 
 
     func makeRequestBySigla(_ sigla: String, completion: @escaping(Criptomoeda) -> Void) {
-        let newUrl = ApiRest.MoedaDetalhe.replacingOccurrences(of: "@@@", with: sigla)
+        let newUrl = "https://rest.coinapi.io/v1/assets/@@@?apikey=1F8A5E86-F1C9-41C7-B8BB-9DB1B81FDE7C".replacingOccurrences(of: "@@@", with: sigla)
+       // let newUrl = ApiRest.MoedaDetalhe.replacingOccurrences(of: "@@@", with: sigla)
         let url = URL(string: newUrl)!
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             print(response as Any)
@@ -144,5 +146,16 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
         let controller = storyboard.instantiateViewController(withIdentifier: "detalhesMoedaSelecionada") as! DetalhesViewController
         controller.moedaSelecionada = moedaSelecionada
         show(controller, sender: self)
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .delete:
+            guard let indexPath = indexPath else {return}
+            myCollection.deleteItems(at: [indexPath])
+            break
+        default:
+            myCollection.reloadData()
+        }
     }
 }
