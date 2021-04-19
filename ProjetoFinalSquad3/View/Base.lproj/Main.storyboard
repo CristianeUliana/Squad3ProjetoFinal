@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Lista de Moedas-->
+        <!--Moedas-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MoedasViewController" customModule="ProjetoFinalSquad3" customModuleProvider="target" sceneMemberID="viewController">
@@ -36,7 +36,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" placeholder="Search" id="oA2-HQ-neg">
-                                                <rect key="frame" x="0.0" y="59" width="414" height="56"/>
+                                                <rect key="frame" x="0.0" y="59.333333333333343" width="414" height="56"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -79,10 +79,10 @@
                             <constraint firstItem="FFq-OR-fpU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Sbf-N8-AHJ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Lista de Moedas" id="abC-fo-RsQ">
+                    <tabBarItem key="tabBarItem" title="Moedas" image="moedas" id="abC-fo-RsQ">
                         <color key="badgeColor" systemColor="systemBlueColor"/>
-                        <imageReference key="selectedImage" image="menubar.rectangle" catalog="system" renderingMode="original"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="2"/>
+                        <imageReference key="selectedImage" image="moedas" renderingMode="template"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <connections>
                         <outlet property="listaMoedas" destination="2dW-op-n6m" id="r5A-JI-U2e"/>
@@ -102,7 +102,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="THk-GU-Qwz">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gO2-Et-gp0"/>
@@ -114,15 +114,19 @@
                             <constraint firstItem="THk-GU-Qwz" firstAttribute="leading" secondItem="gO2-Et-gp0" secondAttribute="leading" id="yIC-eE-eUV"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" enabled="NO" title="" id="tyJ-2d-Iei">
+                        <color key="badgeColor" systemColor="systemBlueColor"/>
+                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="DHn-aC-sTG"/>
                     <connections>
                         <outlet property="telaDetalhes" destination="THk-GU-Qwz" id="awu-JB-bPa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pQp-q0-lPf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="141" y="853"/>
+            <point key="canvasLocation" x="140.57971014492756" y="852.71739130434787"/>
         </scene>
-        <!--Favoritos-->
+        <!--Adicionadas-->
         <scene sceneID="hwh-FU-wfF">
             <objects>
                 <viewController id="MtG-39-Tyf" customClass="FavoritosViewController" customModule="ProjetoFinalSquad3" customModuleProvider="target" sceneMemberID="viewController">
@@ -180,9 +184,10 @@
                             <constraint firstItem="KRl-Mu-J0P" firstAttribute="trailing" secondItem="9BW-fb-9iv" secondAttribute="trailing" constant="20" id="rcE-WL-DCY"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favoritos" id="gar-yK-FMu">
+                    <tabBarItem key="tabBarItem" title="Adicionadas" image="favoritos" id="gar-yK-FMu">
                         <color key="badgeColor" systemColor="systemBlueColor"/>
-                        <imageReference key="selectedImage" image="book" catalog="system" renderingMode="original"/>
+                        <imageReference key="selectedImage" image="favoritos" renderingMode="template"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <connections>
                         <outlet property="dataLabel" destination="b6u-h0-LzD" id="t8D-bu-uBV"/>
@@ -197,7 +202,7 @@
         <scene sceneID="Ak2-uy-0P5">
             <objects>
                 <tabBarController id="HcQ-02-emx" sceneMemberID="viewController">
-                    <tabBar key="tabBar" tag="2" contentMode="scaleToFill" semanticContentAttribute="spatial" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" itemPositioning="fill" id="M2e-7k-Zds">
+                    <tabBar key="tabBar" contentMode="scaleAspectFill" semanticContentAttribute="spatial" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="M2e-7k-Zds">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" systemColor="systemBlueColor"/>
@@ -208,6 +213,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="flC-Rg-1pw"/>
                         <segue destination="MtG-39-Tyf" kind="relationship" relationship="viewControllers" id="4cu-Mb-qsP"/>
+                        <segue destination="J66-4y-L1v" kind="relationship" relationship="viewControllers" id="YRX-Nr-US7"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mDI-ma-Kq2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -216,8 +222,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="book" catalog="system" width="128" height="102"/>
-        <image name="menubar.rectangle" catalog="system" width="128" height="93"/>
+        <image name="favoritos" width="28" height="28"/>
+        <image name="moedas" width="28" height="28"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
