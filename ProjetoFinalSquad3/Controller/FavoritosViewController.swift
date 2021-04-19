@@ -70,8 +70,9 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
                 guard let sigla = gerenciadorDeResultados?.fetchedObjects?[i].lista else {return}
                 listaSiglasFavoritas.append(sigla)
             }
-            completion(listaSiglasFavoritas)
+            
         }
+        completion(listaSiglasFavoritas)
     }
 
 
