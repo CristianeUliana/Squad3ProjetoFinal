@@ -14,7 +14,6 @@ import UIKit
 
 public struct HeaderCores {
         public static let headerColor = UIColor(red: 0.55, green:0.59, blue:0.37, alpha: 1)
-    
 }
 
     // MARK: Fonte Header Título e Subtitulo

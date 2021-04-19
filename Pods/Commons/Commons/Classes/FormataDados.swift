@@ -8,9 +8,6 @@
 import Foundation
 
 
-public struct FormataDados {
-
-
     // MARK: - Tratamento da Data Atual : Esse retorno vai ser colocado no outlet da label da data
 
     public func mostrarDataAtual() -> String {
@@ -21,7 +18,6 @@ public struct FormataDados {
           let dataAtual = formatador.string(from: data)
           return dataAtual.lowercased()
         }
-}
 
 
 extension Double {
