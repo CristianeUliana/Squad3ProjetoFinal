@@ -12,7 +12,6 @@ import CoreData
 class FavoritosViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, NSFetchedResultsControllerDelegate {
  
     
-    
     // MARK: - Outlets
 
     @IBOutlet weak var myCollection: UICollectionView!
@@ -51,8 +50,9 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
             self.recuperaDados(resultado)
         }
     }
-
     
+    
+    // MARK: - Funções
     
     func recuperaFavoritos() {
         let recuperaFavoritos: NSFetchRequest<Favoritos> = Favoritos.fetchRequest()
@@ -80,7 +80,6 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
         completion(listaSiglasFavoritas)
     }
 
-
     func recuperaDados(_ listaSiglasFavoritas: [String]) {
         for sigla in listaSiglasFavoritas {
             makeRequestBySigla(sigla) { (resultado) in
@@ -89,6 +88,15 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
         }
     }
 
+    func setupUI(_ moeda: Criptomoeda){
+        self.listaMoedasFavoritas.append(moeda)
+            DispatchQueue.main.async {
+                self.myCollection.reloadData()
+            }
+    }
+    
+    
+    // MARK: - Requisição
 
     func makeRequestBySigla(_ sigla: String, completion: @escaping(Criptomoeda) -> Void) {
         let newUrl = "https://rest.coinapi.io/v1/assets/@@@?apikey=1F8A5E86-F1C9-41C7-B8BB-9DB1B81FDE7C".replacingOccurrences(of: "@@@", with: sigla)
@@ -114,16 +122,8 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
         }
         task.resume()
     }
-
     
-    func setupUI(_ moeda: Criptomoeda){
-        self.listaMoedasFavoritas.append(moeda)
-            DispatchQueue.main.async {
-                self.myCollection.reloadData()
-            }
-    }
-    
-
+    // MARK: - CollectionView
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return listaMoedasFavoritas.count
@@ -137,7 +137,8 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return UIDevice.current.userInterfaceIdiom == .phone ? CGSize(width: collectionView.bounds.width/2-10, height: 210) : CGSize(width: collectionView.bounds.width/3-20, height: 300)
+        //return CGSize(width: collectionView.bounds.width/2 - 10, height: collectionView.bounds.height/4)
+        return CGSize(width: 100, height: 400)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

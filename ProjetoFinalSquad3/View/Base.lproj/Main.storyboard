@@ -36,7 +36,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" placeholder="Search" id="oA2-HQ-neg">
-                                                <rect key="frame" x="0.0" y="59.333333333333343" width="414" height="56"/>
+                                                <rect key="frame" x="0.0" y="59" width="414" height="56"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -79,7 +79,8 @@
                             <constraint firstItem="FFq-OR-fpU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Sbf-N8-AHJ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Moedas" image="moedas" id="abC-fo-RsQ">
+                    <tabBarItem key="tabBarItem" title="Moedas" id="abC-fo-RsQ">
+                        <imageReference key="image" image="moedas" renderingMode="template"/>
                         <color key="badgeColor" systemColor="systemBlueColor"/>
                         <imageReference key="selectedImage" image="moedas" renderingMode="template"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
@@ -135,7 +136,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9BW-fb-9iv">
-                                <rect key="frame" x="20" y="100" width="374" height="587"/>
+                                <rect key="frame" x="30" y="100" width="354" height="587"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LA6-eQ-ok9">
                                     <size key="itemSize" width="128" height="128"/>
@@ -149,7 +150,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6u-h0-LzD">
-                                        <rect key="frame" x="191" y="52" width="32" height="18"/>
+                                        <rect key="frame" x="0.0" y="52" width="414" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -165,10 +166,10 @@
                                 <constraints>
                                     <constraint firstItem="Zxq-eD-DiW" firstAttribute="centerX" secondItem="euX-x7-5LF" secondAttribute="centerX" id="0qc-AZ-4vF"/>
                                     <constraint firstItem="Zxq-eD-DiW" firstAttribute="centerY" secondItem="euX-x7-5LF" secondAttribute="centerY" constant="-8" id="79c-8x-BAZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="b6u-h0-LzD" secondAttribute="trailing" constant="191" id="Gjo-QE-jcA"/>
-                                    <constraint firstItem="b6u-h0-LzD" firstAttribute="leading" secondItem="euX-x7-5LF" secondAttribute="leading" constant="191" id="IUu-h0-h01"/>
                                     <constraint firstAttribute="height" constant="80" id="M11-7w-fwL"/>
+                                    <constraint firstAttribute="trailing" secondItem="b6u-h0-LzD" secondAttribute="trailing" id="bnM-uY-xhU"/>
                                     <constraint firstItem="b6u-h0-LzD" firstAttribute="top" secondItem="Zxq-eD-DiW" secondAttribute="bottom" constant="8" symbolic="YES" id="h7Z-be-DRD"/>
+                                    <constraint firstItem="b6u-h0-LzD" firstAttribute="leading" secondItem="euX-x7-5LF" secondAttribute="leading" id="tWG-aY-cmW"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -177,11 +178,11 @@
                         <constraints>
                             <constraint firstItem="9BW-fb-9iv" firstAttribute="top" secondItem="euX-x7-5LF" secondAttribute="bottom" constant="20" id="6Zo-9q-pJa"/>
                             <constraint firstItem="KRl-Mu-J0P" firstAttribute="bottom" secondItem="9BW-fb-9iv" secondAttribute="bottom" id="Ebg-fC-3lI"/>
-                            <constraint firstItem="9BW-fb-9iv" firstAttribute="leading" secondItem="KRl-Mu-J0P" secondAttribute="leading" constant="20" id="JBF-m3-vpR"/>
+                            <constraint firstItem="9BW-fb-9iv" firstAttribute="leading" secondItem="KRl-Mu-J0P" secondAttribute="leading" constant="30" id="JBF-m3-vpR"/>
                             <constraint firstItem="euX-x7-5LF" firstAttribute="top" secondItem="KRl-Mu-J0P" secondAttribute="top" id="Pqx-Yd-HfL"/>
                             <constraint firstItem="euX-x7-5LF" firstAttribute="leading" secondItem="KRl-Mu-J0P" secondAttribute="leading" id="hUi-d9-uHj"/>
                             <constraint firstItem="KRl-Mu-J0P" firstAttribute="trailing" secondItem="euX-x7-5LF" secondAttribute="trailing" id="pym-6U-uh0"/>
-                            <constraint firstItem="KRl-Mu-J0P" firstAttribute="trailing" secondItem="9BW-fb-9iv" secondAttribute="trailing" constant="20" id="rcE-WL-DCY"/>
+                            <constraint firstItem="KRl-Mu-J0P" firstAttribute="trailing" secondItem="9BW-fb-9iv" secondAttribute="trailing" constant="30" id="rcE-WL-DCY"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Adicionadas" image="favoritos" id="gar-yK-FMu">

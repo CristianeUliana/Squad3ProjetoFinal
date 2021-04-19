@@ -34,7 +34,7 @@ CHECKOUT OPTIONS:
     :commit: 925d7fed4a26cd67733c1a8ea1b256d8ec2dd9d8
     :git: https://github.com/leojportes/Commons.git
   DetalhesMoedas:
-    :commit: 496d1742216d7f6f33ba0ea1441ee5f29c90cf57
+    :commit: 5c67dce4100200342a6aafeeb7ff04c68dffdf1b
     :git: https://github.com/CristianeUliana/DetalhesMoedas.git
 
 SPEC CHECKSUMS:

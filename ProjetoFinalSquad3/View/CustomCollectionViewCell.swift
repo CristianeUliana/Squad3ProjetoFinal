@@ -25,6 +25,9 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     func configuraCelula(_ moeda: Criptomoeda) {
         layer.cornerRadius = 8
+        
+        
+        CGSize(width: 100, height: 400)
         nomeMoeda.text = moeda.nome
         siglaMoeda.text = moeda.sigla
         valorMoeda.text = moeda.valor.formatador()
@@ -32,6 +35,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
         let id = caminhoIcon.replacingOccurrences(of: "-", with: "")
         let url = ApiRest.UrlIcon.replacingOccurrences(of: "@@@", with: id)
         guard let urlCompleta = URL(string: url) else {return}
-        imagemMoeda.af.setImage(withURL: urlCompleta)
+        //imagemMoeda.af.setImage(withURL: urlCompleta)
     }
 }
