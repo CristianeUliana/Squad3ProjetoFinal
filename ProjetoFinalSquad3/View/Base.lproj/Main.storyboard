@@ -14,7 +14,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MoedasViewController" customModule="ProjetoFinalSquad3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FFq-OR-fpU">
@@ -95,16 +95,16 @@
             </objects>
             <point key="canvasLocation" x="140.57971014492756" y="116.57608695652175"/>
         </scene>
-        <!--Moedas-->
+        <!--Detalhes View Controller-->
         <scene sceneID="jSs-lf-bQ5">
             <objects>
                 <viewController storyboardIdentifier="detalhesMoedaSelecionada" id="J66-4y-L1v" customClass="DetalhesViewController" customModule="ProjetoFinalSquad3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wXL-Lo-iDG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="THk-GU-Qwz">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gO2-Et-gp0"/>
@@ -116,11 +116,6 @@
                             <constraint firstItem="THk-GU-Qwz" firstAttribute="leading" secondItem="gO2-Et-gp0" secondAttribute="leading" id="yIC-eE-eUV"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Moedas" image="moedas" selectedImage="moedas" id="gBD-FJ-4FG">
-                        <color key="badgeColor" systemColor="systemBlueColor"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
-                    </tabBarItem>
-                    <navigationItem key="navigationItem" id="DHn-aC-sTG"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="telaDetalhes" destination="THk-GU-Qwz" id="awu-JB-bPa"/>
@@ -135,7 +130,7 @@
             <objects>
                 <viewController id="MtG-39-Tyf" customClass="FavoritosViewController" customModule="ProjetoFinalSquad3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ezC-48-Rc4" customClass="Teste" customModule="ProjetoFinalSquad3" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9BW-fb-9iv">
@@ -153,7 +148,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6u-h0-LzD">
-                                        <rect key="frame" x="184" y="54" width="47" height="20"/>
+                                        <rect key="frame" x="0.0" y="54" width="414" height="20"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -190,7 +185,8 @@
                             <constraint firstItem="KRl-Mu-J0P" firstAttribute="trailing" secondItem="9BW-fb-9iv" secondAttribute="trailing" constant="30" id="rcE-WL-DCY"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Adicionadas" image="favoritos" id="gar-yK-FMu">
+                    <tabBarItem key="tabBarItem" title="Adicionadas" id="gar-yK-FMu">
+                        <imageReference key="image" image="favoritos" renderingMode="template"/>
                         <color key="badgeColor" systemColor="systemBlueColor"/>
                         <imageReference key="selectedImage" image="favoritos" renderingMode="template"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
@@ -208,18 +204,17 @@
         <scene sceneID="Ak2-uy-0P5">
             <objects>
                 <tabBarController id="HcQ-02-emx" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleAspectFill" semanticContentAttribute="spatial" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="M2e-7k-Zds">
+                    <tabBar key="tabBar" contentMode="scaleAspectFill" semanticContentAttribute="spatial" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="M2e-7k-Zds">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" systemColor="systemBlueColor"/>
-                        <color key="tintColor" systemColor="systemBlueColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" systemColor="systemBlueColor"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="flC-Rg-1pw"/>
                         <segue destination="MtG-39-Tyf" kind="relationship" relationship="viewControllers" id="4cu-Mb-qsP"/>
-                        <segue destination="J66-4y-L1v" kind="show" id="JYm-45-tAX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mDI-ma-Kq2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

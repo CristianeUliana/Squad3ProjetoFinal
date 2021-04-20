@@ -30,7 +30,7 @@
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="knq-FA-6qH"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Cotacao" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVy-y4-qBN">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cotacao" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVy-y4-qBN">
                         <rect key="frame" x="241" y="26" width="97" height="19"/>
                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -54,6 +54,7 @@
                     <constraint firstAttribute="trailing" secondItem="I3L-fA-HYh" secondAttribute="trailing" constant="313" id="JEx-Zd-19Y"/>
                     <constraint firstItem="67a-fV-Oev" firstAttribute="leading" secondItem="BBR-2t-TPS" secondAttribute="leading" id="LeZ-EK-XNk"/>
                     <constraint firstItem="67a-fV-Oev" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="94" id="Lj0-u9-tkh"/>
+                    <constraint firstItem="TVy-y4-qBN" firstAttribute="leading" secondItem="U2I-jt-9sa" secondAttribute="trailing" constant="8" symbolic="YES" id="U8y-gW-6S9"/>
                     <constraint firstItem="U2I-jt-9sa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="WwS-xZ-WyK"/>
                     <constraint firstItem="67a-fV-Oev" firstAttribute="bottom" secondItem="U2I-jt-9sa" secondAttribute="bottom" id="YIg-rE-hhT"/>
                     <constraint firstItem="BBR-2t-TPS" firstAttribute="top" secondItem="67a-fV-Oev" secondAttribute="bottom" constant="11" id="dEa-wf-wm2"/>
