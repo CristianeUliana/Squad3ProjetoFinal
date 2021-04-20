@@ -9,6 +9,10 @@ import UIKit
 import DetalhesMoedas
 import CoreData
 
+protocol ReloadDataDelegate: class {
+    func reloadDataAction()
+}
+
 class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetchedResultsControllerDelegate {
     
     // MARK: - IBOutlets
@@ -17,6 +21,8 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
     
     
     // MARK: - Variáveis
+    
+    var delegate: ReloadDataDelegate? = nil
     
     let detalhes = DetalhesMoeda.fromNib()
     
@@ -56,6 +62,11 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
         detalhes.makeRequestDetalhes(sigla, "estrelaDetalhes")
         detalhes.verificarFavoritos(ehFavorita)
         detalhes.setupUI(moedaDelegate: self)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        delegate?.reloadDataAction()
     }
   
     

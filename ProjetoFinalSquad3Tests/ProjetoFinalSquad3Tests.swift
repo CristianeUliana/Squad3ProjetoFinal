@@ -10,24 +10,85 @@ import XCTest
 
 class ProjetoFinalSquad3Tests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+//    let detalhesViewController = DetalhesViewController()
+//    var ehFavorita: Bool = true
+//    var listaDePreferidas: [Favoritos] =
+//
+//    
+//
+//
+//    func testDeveEstarNaListaDeFavoritos() {
+//
+//        let moedaSelecionada = Criptomoeda(sigla: "btc", nome: "", valor: 2.5, imagem: "")
+//
+//        detalhesViewController.verificarFavorita(moedaSelecionada.sigla)
+//        //_ = detalhesViewController.verificarMoeda()
+//
+//        XCTAssertEqual(true, ehFavorita)
+//    }
+//
+//    func testNaoDeveEstarNaListaDeFavoritos() {
+//
+//        let moedaSelecionada = Criptomoeda(sigla: "abc", nome: "", valor: 2.5, imagem: "")
+//
+//        detalhesViewController.verificarFavorita(moedaSelecionada.sigla)
+//       // _ = detalhesViewController.verificarMoeda()
+//
+//        XCTAssertEqual(false, ehFavorita)
+//
+//    }
+    
+    
+//    let detalhes = DetalhesMoeda.fromNib()
+//    
+//    let moedaDAO = MoedaDao()
+//    
+//    var moedaSelecionada: Criptomoeda?
+//    
+//    var sigla: String?
+//    
+//    var ehFavorita: Bool = false
+//    
+//    var moedaFavorita: Favoritos?
+//    
+//    var indiceFavorita: Int?
+//    
+//    var listaDePreferidas: [Favoritos] = []
+//    
+//    var gerenciadorDeResultados: NSFetchedResultsController<Favoritos>?
+//    
+//    var contexto: NSManagedObjectContext {
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        return appDelegate.persistentContainer.viewContext
+//    }
+    
+    
+    
+    
+//
+    
+    
+    
+    
+    
+//    func verificarMoeda() -> String {
+//        guard let sigla = moedaSelecionada?.sigla else { return "" }
+//        verificarFavorita(sigla)
+//        return sigla
+//    }
+//
+//
+//    func verificarFavorita(_ sigla: String) {
+//        if (listaDePreferidas.count) > 0 {
+//            for i in 0...(listaDePreferidas.count - 1) {
+//                if listaDePreferidas[i].lista == sigla {
+//                    ehFavorita = true
+//                    indiceFavorita = i
+//                    break
+//                }
+//            }
+//        }
+//    }
+    
 
 }

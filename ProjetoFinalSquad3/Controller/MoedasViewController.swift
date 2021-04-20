@@ -86,6 +86,8 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "detalhesMoedaSelecionada") as! DetalhesViewController
         controller.moedaSelecionada = moedaSelecionada
+        controller.delegate = self
+        print(listaDePreferidas)
         show(controller, sender: self)
         listaMoedasTable.deselectRow(at: indexPath, animated: true)
     }
@@ -102,5 +104,15 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
             listaDePesquisa = moedasFiltradas
         }
       listaMoedasTable.reloadData()
+    }
+}
+
+
+extension MoedasViewController: ReloadDataDelegate {
+    func reloadDataAction() {
+        listaDePreferidas = moedaDAO.recuperaFavoritos()
+        print(listaDePreferidas)
+        listaMoedasTable.reloadData()
+        
     }
 }
