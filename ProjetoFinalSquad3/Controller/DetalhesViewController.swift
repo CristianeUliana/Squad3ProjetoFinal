@@ -16,18 +16,13 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
     @IBOutlet var telaDetalhes: UIStackView!
     
     
-    // MARK: - Atributos
+    // MARK: - Variáveis
     
     let detalhes = DetalhesMoeda.fromNib()
     
+    let moedaDAO = MoedaDao()
+    
     var moedaSelecionada: Criptomoeda?
-    
-    var contexto: NSManagedObjectContext {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.persistentContainer.viewContext
-    }
-    
-    var gerenciadorDeResultados:NSFetchedResultsController<Favoritos>?
     
     var sigla: String?
     
@@ -37,18 +32,26 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
     
     var indiceFavorita: Int?
     
+    var listaDePreferidas: [Favoritos] = []
+    
+    var gerenciadorDeResultados: NSFetchedResultsController<Favoritos>?
+    
+    var contexto: NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+    }
     
     // MARK: - Ciclo de Vida
     
     override func viewDidLoad() {
         super.viewDidLoad()
         telaDetalhes.addSubview(detalhes)
-        recuperaFavoritos()
+        listaDePreferidas = moedaDAO.recuperaFavoritos()
         sigla = verificarMoeda()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         guard let sigla = sigla else {return}
         detalhes.makeRequestDetalhes(sigla, "estrelaDetalhes")
         detalhes.verificarFavoritos(ehFavorita)
@@ -56,23 +59,9 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
     }
   
     
-    
     // MARK: - Métodos
     
-    func recuperaFavoritos() {
-        let recuperaFavoritos: NSFetchRequest<Favoritos> = Favoritos.fetchRequest()
-        let ordenaPorNome = NSSortDescriptor(key: "lista", ascending: true)
-        recuperaFavoritos.sortDescriptors = [ordenaPorNome]
-        gerenciadorDeResultados = NSFetchedResultsController(fetchRequest: recuperaFavoritos, managedObjectContext: contexto, sectionNameKeyPath: nil, cacheName: nil)
-        gerenciadorDeResultados?.delegate = self
-        do {
-            try gerenciadorDeResultados?.performFetch()
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
-    
+
     func verificarMoeda() -> String {
         guard let sigla = moedaSelecionada?.sigla else { return "" }
         verificarFavorita(sigla)
@@ -81,10 +70,9 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
     
     
     func verificarFavorita(_ sigla: String) {
-        guard let gerenciador = gerenciadorDeResultados?.fetchedObjects else {return}
-        if (gerenciador.count) > 0 {
-            for i in 0...(gerenciador.count - 1) {
-                if gerenciador[i].lista == sigla {
+        if (listaDePreferidas.count) > 0 {
+            for i in 0...(listaDePreferidas.count - 1) {
+                if listaDePreferidas[i].lista == sigla {
                     ehFavorita = true
                     indiceFavorita = i
                     break
@@ -93,9 +81,9 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
         }
     }
  
+    // MARK: - DelegateBotão
     
     public func buttonAction() {
-        print("botão")
         if ehFavorita == false {
             if moedaFavorita == nil {
                 moedaFavorita = Favoritos(context: contexto)
@@ -112,7 +100,7 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
             guard let sigla = sigla else {return}
             verificarFavorita(sigla)
             guard let indice = indiceFavorita else {return}
-            guard let moedaSelecionada = gerenciadorDeResultados?.fetchedObjects![indice] else {return}
+            let moedaSelecionada = listaDePreferidas[indice]
             contexto.delete(moedaSelecionada)
             ehFavorita = false
             detalhes.verificarFavoritos(ehFavorita)
@@ -123,5 +111,4 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
             }
         }
     }
- 
 }

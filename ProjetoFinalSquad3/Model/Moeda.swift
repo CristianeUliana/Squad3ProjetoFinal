@@ -1,5 +1,9 @@
-
-
+//
+//  Request.swift
+//  ProjetoFinalSquad3
+//
+//  Created by Cristiane Goncalves Uliana on 20/04/21.
+//
 
 struct Moeda: Codable {
 
