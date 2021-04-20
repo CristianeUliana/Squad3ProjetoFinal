@@ -21,6 +21,20 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var pesquisarMoeda: UISearchBar!
     
     
+    
+    // MARK: - Acessibilidades
+    
+    func accessibilityFavoritos() {
+        
+        dataLabel.isAccessibilityElement = true
+        dataLabel.accessibilityTraits = .header
+        dataLabel.accessibilityLabel = "Data de Hoje"
+        
+        pesquisarMoeda.isAccessibilityElement = true
+        pesquisarMoeda.accessibilityTraits = .searchField
+        pesquisarMoeda.accessibilityLabel = "Pesquisa Moeda"
+        
+    }
     // MARK: - Variáveis
     
     let request = Request()
@@ -47,6 +61,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.pesquisarMoeda.delegate = self
         dataLabel.text = mostrarDataAtual()
         listaDePreferidas = moedaDAO.recuperaFavoritos()
+        accessibilityFavoritos()
     }
     
     override func viewWillAppear(_ animated: Bool) {
