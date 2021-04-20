@@ -24,7 +24,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // MARK: - Acessibilidades
     
-    func accessibilityFavoritos() {
+    func accessibilityMoedas() {
         
         dataLabel.isAccessibilityElement = true
         dataLabel.accessibilityTraits = .header
@@ -61,7 +61,8 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.pesquisarMoeda.delegate = self
         dataLabel.text = mostrarDataAtual()
         listaDePreferidas = moedaDAO.recuperaFavoritos()
-        accessibilityFavoritos()
+        accessibilityMoedas()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
