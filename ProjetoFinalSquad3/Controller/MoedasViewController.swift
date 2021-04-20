@@ -55,9 +55,12 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.listaMoedasTable.register(UINib(nibName: "CustumTableViewCell", bundle: nil), forCellReuseIdentifier: "CustumTableViewCell")
         self.listaMoedasTable.delegate = self
         self.listaMoedasTable.dataSource = self
+        
+        
         self.pesquisarMoeda.delegate = self
         dataLabel.text = mostrarDataAtual()
         listaDePreferidas = moedaDAO.recuperaFavoritos()

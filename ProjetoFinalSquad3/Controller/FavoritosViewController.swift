@@ -49,6 +49,7 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
         self.myCollection.delegate = self
         self.myCollection.dataSource = self
         dataLabel.text = mostrarDataAtual()
+        accessibilityFavoritos()
     }
     
     override func viewWillAppear(_ animated: Bool) {
