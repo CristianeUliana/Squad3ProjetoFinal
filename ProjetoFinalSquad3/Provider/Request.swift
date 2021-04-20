@@ -64,9 +64,7 @@ class Request {
                     guard let valor = moeda.priceUsd else {return}
                     guard let imagem = moeda.idIcon else {return}
                     let criptoMoeda = Criptomoeda(sigla: sigla, nome: nome, valor: valor, imagem: imagem)
-                    
                     completion(criptoMoeda)
-                   // self.listaMoedasFavoritas.append(criptoMoeda)
                 }
             } catch let error {
                 print("error: \(error)")

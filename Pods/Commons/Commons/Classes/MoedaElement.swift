@@ -7,7 +7,7 @@
 
 import Foundation
 
-   // MARK: MoedaElement - Será chamada tela de detalhes e na tela de favoritos
+   // MARK: MoedaElement 
 
 public struct MoedaElement: Codable {
     public let assetID, name: String

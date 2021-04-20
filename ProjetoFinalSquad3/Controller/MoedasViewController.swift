@@ -26,7 +26,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let request = Request()
     
     let moedaDAO = MoedaDao()
-    
+
     var listaDeMoedas: [Criptomoeda] = []
     
     var listaDePesquisa: [Criptomoeda] = []
@@ -70,14 +70,15 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustumTableViewCell", for: indexPath) as! CustumTableViewCell
         let moedaAtual = listaDePesquisa[indexPath.row]
+        
+        
+        
         cell.configuraCelula(moedaAtual)
-        if listaDePreferidas.count > 0 {
-            for i in 0...(listaDePreferidas.count - 1) {
-                guard let sigla = listaDePreferidas[i].lista else {return cell}
-                listaSiglasFavoritas.append(sigla)
-            }
-        }
-        cell.colocaEstrela(listaSiglasFavoritas, moedaAtual)
+        
+        
+        
+        var siglaEhFavorita = listaDePreferidas.filter {$0.lista == moedaAtual.sigla}
+        cell.colocaEstrela(siglaEhFavorita.count > 0)
         return cell
     }
     
@@ -86,11 +87,12 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "detalhesMoedaSelecionada") as! DetalhesViewController
         controller.moedaSelecionada = moedaSelecionada
+        controller.delegate = self
         show(controller, sender: self)
         listaMoedasTable.deselectRow(at: indexPath, animated: true)
     }
-    
-    
+
+
     
     // MARK: - SearchBar
 
@@ -103,4 +105,17 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
       listaMoedasTable.reloadData()
     }
+}
+
+extension MoedasViewController: ReloadDataDelegate {
+
+    func reloadDataAction() {
+        listaDePreferidas = moedaDAO.recuperaFavoritos()
+        listaSiglasFavoritas = []
+        DispatchQueue.main.async {
+            self.listaMoedasTable.reloadData()
+        }
+
+    }
+
 }

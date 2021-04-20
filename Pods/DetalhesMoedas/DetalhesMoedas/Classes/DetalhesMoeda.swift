@@ -26,8 +26,7 @@ public class DetalhesMoeda: UIView {
     // MARK: - Métodos
     
     public func makeRequestDetalhes(_ sigla: String, _ estrela: String) {
-        let newUrl = "https://rest.coinapi.io/v1/assets/@@@?apikey=1F8A5E86-F1C9-41C7-B8BB-9DB1B81FDE7C".replacingOccurrences(of: "@@@", with: sigla)
-            //let newUrl = ApiRest.MoedaDetalhe.replacingOccurrences(of: "@@@", with: sigla)
+            let newUrl = ApiRest.MoedaDetalhe.replacingOccurrences(of: "@@@", with: sigla)
             let url = URL(string: newUrl)!
             let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
                 print(response as Any)
@@ -47,13 +46,9 @@ public class DetalhesMoeda: UIView {
         }
 
     public func verificarFavoritos(_ ehFavorita: Bool) {
-//            let listaDeFavoritos = favoritos.split(separator: "|")
-            //if listaDeFavoritos.contains(sigla) {
         if ehFavorita {
-                //ehFavorito = true
             configurarButton(ActionButton.Remover)
             favoritoImage.isHidden = false
-            //favoritoImage.image = UIImage(named: estrela)
         } else {
             configurarButton(ActionButton.Adicionar)
             favoritoImage.isHidden = true
@@ -100,6 +95,23 @@ public class DetalhesMoeda: UIView {
             delegate?.buttonAction()
         }
     }
+    
+    // MARK: - Acessibilidade
+
+    func accessibilityDetails(){
+        
+        siglaMoedaLabel.isAccessibilityElement = true
+        siglaMoedaLabel.accessibilityLabel = "Sigla da Moeda"
+        
+        moedaImage.isAccessibilityElement = true
+        moedaImage.accessibilityLabel = "Imagem da Moeda Clicada"
+        
+        valorMoedaLabel.isAccessibilityElement = true
+        valorMoedaLabel.accessibilityLabel = "Valor da Moeda Selecionada"
+        
+        valorHoraLabel.isAccessibilityElement = true
+        valorHoraLabel.accessibilityLabel = "Valor do volume negociado na ultima hora"
+    }
 }
 
     // MARK: - Extensions
@@ -126,20 +138,5 @@ extension UIView {
             return nib
         }
         return T()
-    }
-}
-
-extension Double {
-    
-    func formatador() -> String {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-        numberFormatter.maximumFractionDigits = 2
-        numberFormatter.minimumFractionDigits = 2
-        numberFormatter.decimalSeparator = ","
-        numberFormatter.groupingSeparator = "."
-        let numero = NSNumber(value: self)
-        let numeroFormatado = numberFormatter.string(from: numero) ?? ""
-        return "$ \(numeroFormatado)"
     }
 }

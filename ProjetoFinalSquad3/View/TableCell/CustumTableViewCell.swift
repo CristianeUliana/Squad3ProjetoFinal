@@ -45,11 +45,9 @@ class CustumTableViewCell: UITableViewCell {
         imagemCriptomoeda.af.setImage(withURL: urlCompleta)
     }
     
-    func colocaEstrela(_ listaSiglasFavoritas: [String], _ moeda: Criptomoeda) {
+    func colocaEstrela(_ ehFavorito: Bool) {
         imagemDeFavoritos.image = UIImage(named: "estrelaLista")
-        if listaSiglasFavoritas.count == 0 {
-            imagemDeFavoritos.isHidden = true
-        } else if listaSiglasFavoritas.contains(moeda.sigla) {
+        if ehFavorito {
             imagemDeFavoritos.isHidden = false
         } else {
             imagemDeFavoritos.isHidden = true
