@@ -45,7 +45,6 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
         telaDetalhes.addSubview(detalhes)
         recuperaFavoritos()
         sigla = verificarMoeda()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {

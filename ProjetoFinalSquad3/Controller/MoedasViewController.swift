@@ -51,13 +51,39 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        makeRequest{ (listaDeMoedas) in
+        super.viewWillAppear(animated)
+        makeRequest { (listaDeMoedas) in
             self.listaDeMoedas = listaDeMoedas
             self.listaDePesquisa = self.listaDeMoedas
             DispatchQueue.main.async {
                 self.listaMoedas.reloadData()
             }
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("didAppear")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("viewWillDisappear")
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("viewDidDisappear")
+    }
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        print("viewWillLayoutSubviews")
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        print("viewDidLayoutSubviews")
     }
     
     
@@ -87,7 +113,8 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "detalhesMoedaSelecionada") as! DetalhesViewController
         controller.moedaSelecionada = moedaSelecionada
-        show(controller, sender: self)
+        //show(controller, sender: self)
+        present(controller, animated: true, completion: nil)
         listaMoedas.deselectRow(at: indexPath, animated: true)
     }
     
