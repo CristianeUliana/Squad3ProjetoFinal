@@ -123,4 +123,5 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
             }
         }
     }
+ 
 }
