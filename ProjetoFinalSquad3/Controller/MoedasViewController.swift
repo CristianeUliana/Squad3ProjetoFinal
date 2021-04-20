@@ -47,6 +47,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.listaMoedas.dataSource = self
         self.pesquisarMoeda.delegate = self
         dataLabel.text = mostrarDataAtual()
+        recuperaFavoritos()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,7 +61,6 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     
-    
     // MARK: - TableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,7 +70,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustumTableViewCell", for: indexPath) as! CustumTableViewCell
         let moedaAtual = listaDePesquisa[indexPath.row]
-        cell.configuraCelula(listaSiglasFavoritas, moedaAtual)
+        cell.configuraCelula(moedaAtual)
         guard let gerenciador = gerenciadorDeResultados?.fetchedObjects else {return cell}
         if gerenciador.count > 0 {
             for i in 0...(((gerenciadorDeResultados?.fetchedObjects!.count)!) - 1) {
@@ -78,7 +78,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 listaSiglasFavoritas.append(sigla)
             }
         }
-        cell.configuraCelula(listaSiglasFavoritas, moedaAtual)
+        cell.colocaEstrela(listaSiglasFavoritas, moedaAtual)
         return cell
     }
     
@@ -88,14 +88,14 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let controller = storyboard.instantiateViewController(withIdentifier: "detalhesMoedaSelecionada") as! DetalhesViewController
         controller.moedaSelecionada = moedaSelecionada
         show(controller, sender: self)
+        listaMoedas.deselectRow(at: indexPath, animated: true)
     }
+    
 
     
     // MARK: - Request
     
     func makeRequest(completion:@escaping([Criptomoeda]) -> Void) {
-
-
 //        let url = URL(string: ApiRest.TodasAsMoedas)!
         let url = URL(string: "https://rest.coinapi.io/v1/assets?apikey=1F8A5E86-F1C9-41C7-B8BB-9DB1B81FDE7C")!
         //let url = URL(string: "https://6076e5cf1ed0ae0017d6a02f.mockapi.io/api/v1/users")!

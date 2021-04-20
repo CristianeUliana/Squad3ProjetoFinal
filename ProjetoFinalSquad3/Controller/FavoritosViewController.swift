@@ -132,6 +132,7 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let celulaFavorita = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
+        celulaFavorita.tag = indexPath.row
         let moedaAtual = listaMoedasFavoritas[indexPath.item]
         celulaFavorita.configuraCelula(moedaAtual)
         return celulaFavorita
@@ -148,16 +149,7 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
         let controller = storyboard.instantiateViewController(withIdentifier: "detalhesMoedaSelecionada") as! DetalhesViewController
         controller.moedaSelecionada = moedaSelecionada
         show(controller, sender: self)
+        
     }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .delete:
-            guard let indexPath = indexPath else {return}
-            myCollection.deleteItems(at: [indexPath])
-            break
-        default:
-            myCollection.reloadData()
-        }
-    }
+
 }
