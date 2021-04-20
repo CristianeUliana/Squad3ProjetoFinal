@@ -197,7 +197,8 @@
                             <constraint firstItem="KRl-Mu-J0P" firstAttribute="trailing" secondItem="9BW-fb-9iv" secondAttribute="trailing" constant="24" id="rcE-WL-DCY"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Adicionadas" image="favoritos" id="gar-yK-FMu">
+                    <tabBarItem key="tabBarItem" title="Adicionadas" id="gar-yK-FMu">
+                        <imageReference key="image" image="favoritos" renderingMode="template"/>
                         <color key="badgeColor" systemColor="systemBlueColor"/>
                         <imageReference key="selectedImage" image="favoritos" renderingMode="template"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
