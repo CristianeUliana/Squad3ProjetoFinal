@@ -24,10 +24,9 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     
     func configuraCelula(_ moeda: Criptomoeda) {
-        layer.cornerRadius = 8
+        layer.cornerRadius = 10
+        backgroundColor? = HeaderCores.headerColor
         
-        
-        CGSize(width: 100, height: 400)
         nomeMoeda.text = moeda.nome
         siglaMoeda.text = moeda.sigla
         valorMoeda.text = moeda.valor.formatador()
