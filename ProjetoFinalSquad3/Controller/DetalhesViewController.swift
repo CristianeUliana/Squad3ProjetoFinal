@@ -10,12 +10,10 @@ import DetalhesMoedas
 import CoreData
 
 
+
 public protocol ReloadDataDelegate: class {
-
     func reloadDataAction()
-
 }
-
 
 class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetchedResultsControllerDelegate {
     
@@ -26,13 +24,13 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
     
     // MARK: - Variáveis
     
+    var delegate: ReloadDataDelegate? = nil
+    
     let detalhes = DetalhesMoeda.fromNib()
     
     let moedaDAO = MoedaDao()
     
     var moedaSelecionada: Criptomoeda?
-    
-    var delegate: ReloadDataDelegate? = nil
     
     var sigla: String?
     
@@ -56,7 +54,6 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
     override func viewDidLoad() {
         super.viewDidLoad()
         telaDetalhes.addSubview(detalhes)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,11 +63,11 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
         detalhes.verificarFavoritos(ehFavorita)
         detalhes.setupUI(moedaDelegate: self)
     }
-  
+    
     override func viewDidDisappear(_ animated: Bool) {
-           super.viewDidDisappear(animated)
-           delegate?.reloadDataAction()
-       }
+        super.viewDidDisappear(animated)
+        delegate?.reloadDataAction()
+    }
     
     // MARK: - Métodos
     

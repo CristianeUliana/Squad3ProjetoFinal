@@ -23,6 +23,7 @@ public class DetalhesMoeda: UIView {
     @IBOutlet weak var valorMesLabel: UILabel!
     @IBOutlet weak var valorAnoLabel: UILabel!
     
+    
     // MARK: - Métodos
     
     public func makeRequestDetalhes(_ sigla: String, _ estrela: String) {
@@ -139,4 +140,5 @@ extension UIView {
         }
         return T()
     }
+    
 }

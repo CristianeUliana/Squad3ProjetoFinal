@@ -47,6 +47,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.pesquisarMoeda.delegate = self
         dataLabel.text = mostrarDataAtual()
         listaDePreferidas = moedaDAO.recuperaFavoritos()
+        accessibilityMoedas()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +62,21 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     
+    // MARK: - Acessibilidades
+    
+    func accessibilityMoedas() {
+        
+        dataLabel.isAccessibilityElement = true
+        dataLabel.accessibilityTraits = .header
+        dataLabel.accessibilityLabel = "Data de Hoje"
+        
+        pesquisarMoeda.isAccessibilityElement = true
+        pesquisarMoeda.accessibilityTraits = .searchField
+        pesquisarMoeda.accessibilityLabel = "Pesquisa Moeda"
+        
+    }
+    
+    
     // MARK: - TableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,13 +86,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustumTableViewCell", for: indexPath) as! CustumTableViewCell
         let moedaAtual = listaDePesquisa[indexPath.row]
-        
-        
-        
         cell.configuraCelula(moedaAtual)
-        
-        
-        
         var siglaEhFavorita = listaDePreferidas.filter {$0.lista == moedaAtual.sigla}
         cell.colocaEstrela(siglaEhFavorita.count > 0)
         return cell
@@ -107,6 +117,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 }
 
+
 extension MoedasViewController: ReloadDataDelegate {
 
     func reloadDataAction() {
@@ -115,7 +126,5 @@ extension MoedasViewController: ReloadDataDelegate {
         DispatchQueue.main.async {
             self.listaMoedasTable.reloadData()
         }
-
     }
-
 }

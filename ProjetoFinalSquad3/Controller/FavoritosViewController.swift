@@ -17,6 +17,16 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
     @IBOutlet weak var myCollection: UICollectionView!
     @IBOutlet weak var dataLabel: UILabel!
     
+    // MARK: - Acessibilidades
+    
+    func accessibilityFavoritos() {
+        
+        dataLabel.isAccessibilityElement = true
+        dataLabel.accessibilityTraits = .header
+        dataLabel.accessibilityLabel = "Data de Hoje"
+       
+        
+    }
     
     // MARK: - Variáveis
     
@@ -39,6 +49,7 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
         self.myCollection.delegate = self
         self.myCollection.dataSource = self
         dataLabel.text = mostrarDataAtual()
+        accessibilityFavoritos()
     }
     
     override func viewWillAppear(_ animated: Bool) {
