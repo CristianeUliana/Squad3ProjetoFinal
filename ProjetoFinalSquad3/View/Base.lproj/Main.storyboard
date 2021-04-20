@@ -88,7 +88,7 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="dataLabel" destination="hAu-Ku-pCQ" id="3WA-EI-WdS"/>
-                        <outlet property="listaMoedas" destination="2dW-op-n6m" id="r5A-JI-U2e"/>
+                        <outlet property="listaMoedasTable" destination="2dW-op-n6m" id="r5A-JI-U2e"/>
                         <outlet property="pesquisarMoeda" destination="oA2-HQ-neg" id="WRz-rJ-6G7"/>
                     </connections>
                 </viewController>
@@ -99,7 +99,6 @@
         <!--Detalhes View Controller-->
         <scene sceneID="jSs-lf-bQ5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pQp-q0-lPf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="detalhesMoedaSelecionada" id="J66-4y-L1v" customClass="DetalhesViewController" customModule="ProjetoFinalSquad3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wXL-Lo-iDG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
@@ -124,6 +123,7 @@
                         <outlet property="telaDetalhes" destination="THk-GU-Qwz" id="awu-JB-bPa"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pQp-q0-lPf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140.57971014492756" y="852.71739130434787"/>
         </scene>
@@ -178,6 +178,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="177" height="166"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
+                                        <color key="backgroundColor" red="0.54901960780000003" green="0.59607843140000005" blue="0.35686274509999999" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                         <size key="customSize" width="177" height="166"/>
                                     </collectionViewCell>
                                 </cells>

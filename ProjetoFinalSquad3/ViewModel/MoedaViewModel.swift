@@ -13,5 +13,5 @@ struct Criptomoeda {
     let nome: String
     let valor: Double
     let imagem: String
-    
+
 }
