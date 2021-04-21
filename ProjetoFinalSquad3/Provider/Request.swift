@@ -26,7 +26,7 @@ class Request {
                 guard let responseData = data else { return }
                 do {
                     let moedas = try JSONDecoder().decode(Moedas.self, from: responseData)
-                    for i in 0...5 {
+                    for i in 0...30 {
                         var moedaFiltrada = moedas.filter {$0.typeIsCrypto == 1 && $0.priceUsd ?? 0>0 && (($0.idIcon?.isEmpty) != nil)}
                         guard let sigla = moedaFiltrada[i].assetID else {return}
                         guard let nome = moedaFiltrada[i].name else {return}
