@@ -45,11 +45,7 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        listaSiglasFavoritas = []
-        listaMoedasFavoritas = []
-        verificarFavoritas { (resultado) in
-            self.recuperaDados(resultado)
-        }
+        recarregarDados()
     }
     
     
@@ -91,6 +87,17 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
             }
     }
     
+    func recarregarDados() {
+        listaSiglasFavoritas = []
+        listaMoedasFavoritas = []
+        verificarFavoritas { (resultado) in
+            self.recuperaDados(resultado)
+        }
+        DispatchQueue.main.async {
+            self.myCollection.reloadData()
+        }
+    }
+    
 
     // MARK: - CollectionView
     
@@ -126,10 +133,6 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
 extension FavoritosViewController: ReloadDataDelegate {
 
     func reloadDataAction() {
-        listaDePreferidas = moedaDAO.recuperaFavoritos()
-        listaSiglasFavoritas = []
-        DispatchQueue.main.async {
-            self.myCollection.reloadData()
-        }
+        recarregarDados()
     }
 }
