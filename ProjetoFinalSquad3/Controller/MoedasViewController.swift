@@ -65,15 +65,12 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: - Acessibilidades
     
     func accessibilityMoedas() {
-        
         dataLabel.isAccessibilityElement = true
         dataLabel.accessibilityTraits = .header
         dataLabel.accessibilityLabel = "Data de Hoje"
-        
         pesquisarMoeda.isAccessibilityElement = true
         pesquisarMoeda.accessibilityTraits = .searchField
         pesquisarMoeda.accessibilityLabel = "Pesquisa Moeda"
-        
     }
     
     

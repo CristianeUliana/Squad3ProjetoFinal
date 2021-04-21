@@ -13,6 +13,8 @@ class MoedaDao: NSObject {
     
     // MARK: - Variáveis
     
+    var moedaFavorita: Favoritos?
+    
     var gerenciadorDeResultados: NSFetchedResultsController<Favoritos>?
     
     var contexto: NSManagedObjectContext {
@@ -34,5 +36,26 @@ class MoedaDao: NSObject {
         }
         guard let listaDeMoedas =  gerenciadorDeResultados?.fetchedObjects else {return [] }
         return listaDeMoedas
+    }
+    
+    func adicionarMoeda(_ sigla: String) {
+        if moedaFavorita == nil {
+            moedaFavorita = Favoritos(context: contexto)
+        }
+        moedaFavorita?.lista = sigla
+    }
+    
+    func deletarMoeda(_ moeda: Favoritos) {
+        contexto.delete(moeda)
+    }
+    
+    func salvarContexto() {
+        if contexto.hasChanges {
+            do {
+                try contexto.save()
+            } catch {
+                print(error)
+            }
+        }
     }
 }

@@ -17,6 +17,7 @@ public protocol ReloadDataDelegate: class {
 
 class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetchedResultsControllerDelegate {
     
+    
     // MARK: - IBOutlets
     
     @IBOutlet var telaDetalhes: UIStackView!
@@ -42,12 +43,6 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
     
     var listaDePreferidas: [Favoritos] = []
     
-    var gerenciadorDeResultados: NSFetchedResultsController<Favoritos>?
-    
-    var contexto: NSManagedObjectContext {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.persistentContainer.viewContext
-    }
     
     // MARK: - Ciclo de Vida
     
@@ -91,39 +86,43 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
                     ehFavorita = false
                 }
             }
+        } else {
+            ehFavorita = false
         }
     }
  
     // MARK: - DelegateBotão
     
-    public func buttonAction() {
-       
-        listaDePreferidas = moedaDAO.recuperaFavoritos()
+    func buttonAction() {
+        
+        guard let sigla = moedaSelecionada?.sigla else {return}
+        
         if ehFavorita == false {
-            if moedaFavorita == nil {
-                moedaFavorita = Favoritos(context: contexto)
-            }
-            moedaFavorita?.lista = sigla
+            
+            moedaDAO.adicionarMoeda(sigla)
             detalhes.verificarFavoritos(true)
-            do {
-                try contexto.save()
-                } catch {
-                    print(error.localizedDescription)
-                }
+            
         } else {
-            guard let sigla = moedaSelecionada?.sigla else {return}
-            verificarFavorita(sigla)
-            guard let indice = indiceFavorita else {return}
-            let moedaRemovida = listaDePreferidas[indice]
-            listaDePreferidas.remove(at: indice)
-            contexto.delete(moedaRemovida)
+            
+            removerMoedaFavorita(sigla)
+            
+//            guard let indice = indiceFavorita else {return}
+//            let moedaRemovida = listaDePreferidas[indice]
+//            listaDePreferidas.remove(at: indice)
+            
             detalhes.verificarFavoritos(false)
-            do {
-                try contexto.save()
-            } catch {
-                print(error.localizedDescription)
-            }
+            
         }
     }
-
+    
+    func removerMoedaFavorita(_ sigla: String) {
+        
+        var moedaRemovidaList = listaDePreferidas.filter {$0.lista == sigla}
+        guard let moedaRemovida = moedaRemovidaList.first else {return}
+    
+        moedaDAO.deletarMoeda(moedaRemovida)
+        moedaDAO.salvarContexto()
+        
+    }
+    
 }
