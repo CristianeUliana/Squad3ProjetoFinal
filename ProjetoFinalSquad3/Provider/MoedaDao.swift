@@ -43,19 +43,19 @@ class MoedaDao: NSObject {
             moedaFavorita = Favoritos(context: contexto)
         }
         moedaFavorita?.lista = sigla
+        do {
+            try contexto.save()
+        } catch {
+            print(error)
+        }
     }
     
     func deletarMoeda(_ moeda: Favoritos) {
         contexto.delete(moeda)
-    }
-    
-    func salvarContexto() {
-        if contexto.hasChanges {
-            do {
-                try contexto.save()
-            } catch {
-                print(error)
-            }
+        do {
+            try contexto.save()
+        } catch {
+            print(error)
         }
     }
 }

@@ -25,7 +25,7 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
     
     // MARK: - Variáveis
     
-    var delegate: ReloadDataDelegate? = nil
+    weak var delegate: ReloadDataDelegate?
     
     let detalhes = DetalhesMoeda.fromNib()
     
@@ -94,35 +94,19 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
     // MARK: - DelegateBotão
     
     func buttonAction() {
-        
         guard let sigla = moedaSelecionada?.sigla else {return}
-        
         if ehFavorita == false {
-            
             moedaDAO.adicionarMoeda(sigla)
             detalhes.verificarFavoritos(true)
-            
         } else {
-            
             removerMoedaFavorita(sigla)
-            
-//            guard let indice = indiceFavorita else {return}
-//            let moedaRemovida = listaDePreferidas[indice]
-//            listaDePreferidas.remove(at: indice)
-            
             detalhes.verificarFavoritos(false)
-            
         }
     }
     
     func removerMoedaFavorita(_ sigla: String) {
-        
-        var moedaRemovidaList = listaDePreferidas.filter {$0.lista == sigla}
+        let moedaRemovidaList = listaDePreferidas.filter {$0.lista == sigla}
         guard let moedaRemovida = moedaRemovidaList.first else {return}
-    
         moedaDAO.deletarMoeda(moedaRemovida)
-        moedaDAO.salvarContexto()
-        
     }
-    
 }

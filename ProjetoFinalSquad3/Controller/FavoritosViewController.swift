@@ -17,16 +17,7 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
     @IBOutlet weak var myCollection: UICollectionView!
     @IBOutlet weak var dataLabel: UILabel!
     
-    // MARK: - Acessibilidades
-    
-    func accessibilityFavoritos() {
-        
-        dataLabel.isAccessibilityElement = true
-        dataLabel.accessibilityTraits = .header
-        dataLabel.accessibilityLabel = "Data de Hoje"
-       
-        
-    }
+   
     
     // MARK: - Variáveis
     
@@ -59,6 +50,15 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
         verificarFavoritas { (resultado) in
             self.recuperaDados(resultado)
         }
+    }
+    
+    
+    // MARK: - Acessibilidades
+    
+    func accessibilityFavoritos() {
+        dataLabel.isAccessibilityElement = true
+        dataLabel.accessibilityTraits = .header
+        dataLabel.accessibilityLabel = "Data de Hoje"
     }
     
 
@@ -114,7 +114,22 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
         let moedaSelecionada = listaMoedasFavoritas[indexPath.item]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "detalhesMoedaSelecionada") as! DetalhesViewController
+        controller.delegate = self
         controller.moedaSelecionada = moedaSelecionada
         show(controller, sender: self)
+    }
+}
+
+
+    // MARK: - Extension
+
+extension FavoritosViewController: ReloadDataDelegate {
+
+    func reloadDataAction() {
+        listaDePreferidas = moedaDAO.recuperaFavoritos()
+        listaSiglasFavoritas = []
+        DispatchQueue.main.async {
+            self.myCollection.reloadData()
+        }
     }
 }
