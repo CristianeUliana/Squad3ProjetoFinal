@@ -24,7 +24,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Eu3-yq-XbW">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="368"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BTC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6u-dz-vYs">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6u-dz-vYs">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="70" id="JYa-cc-Iy0"/>
@@ -75,7 +75,7 @@
                                                 <constraint firstAttribute="height" constant="80" id="gP0-KO-2tm"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUv-yN-KIG">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUv-yN-KIG">
                                             <rect key="frame" x="0.0" y="170" width="414" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="TdN-CL-Xop"/>
@@ -97,7 +97,7 @@
                                     </constraints>
                                 </stackView>
                             </subviews>
-                            <color key="backgroundColor" red="0.64515024586814562" green="0.75497699873096447" blue="0.39357389278506827" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="backgroundColor" red="0.54901960780000003" green="0.59607843140000005" blue="0.35686274509999999" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstItem="Eu3-yq-XbW" firstAttribute="top" secondItem="To3-dQ-J3f" secondAttribute="top" id="6Zm-5x-3uC"/>
                                 <constraint firstItem="Eu3-yq-XbW" firstAttribute="leading" secondItem="To3-dQ-J3f" secondAttribute="leading" id="VIS-71-QUd"/>

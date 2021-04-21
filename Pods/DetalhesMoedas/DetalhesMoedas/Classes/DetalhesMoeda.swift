@@ -95,25 +95,8 @@ public class DetalhesMoeda: UIView {
             delegate?.buttonAction()
         }
     }
-    
-    // MARK: - Acessibilidade
-
-    func accessibilityDetails(){
-        
-        siglaMoedaLabel.isAccessibilityElement = true
-        siglaMoedaLabel.accessibilityLabel = "Sigla da Moeda"
-        
-        moedaImage.isAccessibilityElement = true
-        moedaImage.accessibilityLabel = "Imagem da Moeda Clicada"
-        
-        valorMoedaLabel.isAccessibilityElement = true
-        valorMoedaLabel.accessibilityLabel = "Valor da Moeda Selecionada"
-        
-        valorHoraLabel.isAccessibilityElement = true
-        valorHoraLabel.accessibilityLabel = "Valor do volume negociado na ultima hora"
-    }
 }
-
+    
     // MARK: - Extensions
 
 extension UIView {
