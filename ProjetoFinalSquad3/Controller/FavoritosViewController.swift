@@ -60,7 +60,19 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
 
     // MARK: - Funções
     
-    func verificarFavoritas(completion: @escaping([String]) -> Void) {
+    
+    func recarregarDados() {
+        guard let moedaCompartilhada = MoedaGlobal.moedaInstanciada.moedaCompartilhada else {return}
+        verificarFavoritas()
+        recuperaDados(listaSiglasFavoritas, moedaCompartilhada)
+        DispatchQueue.main.async {
+            self.myCollection.reloadData()
+        }
+    }
+    
+    func verificarFavoritas() {
+        listaDePreferidas = []
+        listaSiglasFavoritas = []
         listaDePreferidas = moedaDAO.recuperaFavoritos()
         let numeroMoedasFavoritas = listaDePreferidas.count
         if numeroMoedasFavoritas > 0 {
@@ -69,34 +81,47 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
                 listaSiglasFavoritas.append(sigla)
             }
         }
-        completion(listaSiglasFavoritas)
-    }
-
-    func recuperaDados(_ listaSiglasFavoritas: [String]) {
-        for sigla in listaSiglasFavoritas {
-            request.makeRequestBySigla(sigla) { (resultado) in
-                self.setupUI(resultado)
-            }
-        }
-    }
-
-    func setupUI(_ moeda: Criptomoeda) {
-        self.listaMoedasFavoritas.append(moeda)
-            DispatchQueue.main.async {
-                self.myCollection.reloadData()
-            }
     }
     
-    func recarregarDados() {
-        listaSiglasFavoritas = []
+    func recuperaDados(_ listaSiglasFavoritas: [String], _ moedaCompartilhada: [Criptomoeda]) {
         listaMoedasFavoritas = []
-        verificarFavoritas { (resultado) in
-            self.recuperaDados(resultado)
-        }
-        DispatchQueue.main.async {
-            self.myCollection.reloadData()
+        for i in 0...moedaCompartilhada.count-1 {
+            let sigla = moedaCompartilhada[i].sigla
+            if listaSiglasFavoritas.contains(sigla) {
+                listaMoedasFavoritas.append(moedaCompartilhada[i])
+            }
         }
     }
+    
+  
+        
+    
+    
+
+//    func recuperaDados(_ listaSiglasFavoritas: [String]) {
+//        for sigla in listaSiglasFavoritas {
+//            request.makeRequestBySigla(sigla) { (resultado) in
+//                self.setupUI(resultado)
+//            }
+//        }
+//    }
+
+//    func setupUI(_ moeda: Criptomoeda) {
+//        self.listaMoedasFavoritas.append(moeda)
+//            DispatchQueue.main.async {
+//                self.myCollection.reloadData()
+//            }
+//    }
+    
+    
+        
+//        verificarFavoritas { (resultado) in
+//            self.recuperaDados(resultado)
+//        }
+//        DispatchQueue.main.async {
+//            self.myCollection.reloadData()
+//        }
+//    }
     
 
     // MARK: - CollectionView
@@ -133,6 +158,6 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
 extension FavoritosViewController: ReloadDataDelegate {
 
     func reloadDataAction() {
-        recarregarDados()
+        //recarregarDados()
     }
 }

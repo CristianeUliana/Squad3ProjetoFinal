@@ -55,6 +55,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
         request.makeRequestTelaPrincipal { (listaDeMoedas) in
             self.listaDeMoedas = listaDeMoedas
             self.listaDePesquisa = self.listaDeMoedas
+            MoedaGlobal.moedaInstanciada.moedaCompartilhada = self.listaDeMoedas
             DispatchQueue.main.async {
                 self.listaMoedasTable.reloadData()
             }
