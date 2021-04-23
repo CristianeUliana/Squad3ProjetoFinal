@@ -33,21 +33,21 @@ class ProjetoFinalSquad3Tests: XCTestCase {
     }
     
 
-    func testeMoedaViewController() throws {
-        moedaViewController = MoedasViewController()
-        moedaViewController.viewDidLoad()
-    }
-    
-    func testeFavoritosViewController() throws {
-        favoritosViewController = FavoritosViewController()
-        favoritosViewController.viewDidLoad()
-    }
-    
-    func testeDetalhesViewController() throws {
-        detalhesViewController = DetalhesViewController()
-        detalhesViewController.viewDidLoad()
-    }
-        
+//    func testeMoedaViewController() throws {
+//        moedaViewController = MoedasViewController()
+//        moedaViewController.viewDidLoad()
+//    }
+//    
+//    func testeFavoritosViewController() throws {
+//        favoritosViewController = FavoritosViewController()
+//        favoritosViewController.viewDidLoad()
+//    }
+//    
+//    func testeDetalhesViewController() throws {
+//        detalhesViewController = DetalhesViewController()
+//        detalhesViewController.viewDidLoad()
+//    }
+//        
    
 
     func testPerformanceExample() throws {
