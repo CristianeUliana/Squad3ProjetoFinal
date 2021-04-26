@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import Cuckoo
+
 @testable import ProjetoFinalSquad3
 
 class DetalhesViewControllerTests: XCTestCase {

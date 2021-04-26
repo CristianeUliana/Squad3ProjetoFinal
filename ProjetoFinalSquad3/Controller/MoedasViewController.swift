@@ -24,16 +24,14 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: - Variáveis
     
     let request = Request()
-    
-    let moedaDAO = MoedaDao()
 
     var listaDeMoedas: [Criptomoeda] = []
     
     var listaDePesquisa: [Criptomoeda] = []
-    
-    var listaSiglasFavoritas: [String] = []
   
-    var listaDePreferidas: [Favoritos] = []
+    var listaDePreferidas: [String] = []
+    
+    let defaults = UserDefaults.standard
     
     
     
@@ -46,12 +44,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.listaMoedasTable.dataSource = self
         self.pesquisarMoeda.delegate = self
         dataLabel.text = mostrarDataAtual()
-        listaDePreferidas = moedaDAO.recuperaFavoritos()
         accessibilityMoedas()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         request.makeRequestTelaPrincipal { (listaDeMoedas) in
             self.listaDeMoedas = listaDeMoedas
             self.listaDePesquisa = self.listaDeMoedas
@@ -60,6 +53,12 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.listaMoedasTable.reloadData()
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        listaDePreferidas = defaults.object(forKey: "listaSiglas") as? [String] ?? []
+        listaMoedasTable.reloadData()
     }
 
     
@@ -85,7 +84,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustumTableViewCell", for: indexPath) as! CustumTableViewCell
         let moedaAtual = listaDePesquisa[indexPath.row]
         cell.configuraCelula(moedaAtual)
-        var siglaEhFavorita = listaDePreferidas.filter {$0.lista == moedaAtual.sigla}
+        let siglaEhFavorita = listaDePreferidas.filter {$0 == moedaAtual.sigla}
         cell.colocaEstrela(siglaEhFavorita.count > 0)
         return cell
     }
@@ -121,8 +120,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
 extension MoedasViewController: ReloadDataDelegate {
 
     func reloadDataAction() {
-        listaDePreferidas = moedaDAO.recuperaFavoritos()
-        listaSiglasFavoritas = []
+        listaDePreferidas = defaults.object(forKey: "listaSiglas") as? [String] ?? []
         DispatchQueue.main.async {
             self.listaMoedasTable.reloadData()
         }

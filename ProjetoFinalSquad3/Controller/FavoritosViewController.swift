@@ -23,14 +23,11 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
     
     let request = Request()
     
-    let moedaDAO = MoedaDao()
-    
-    var listaSiglasFavoritas: [String] = []
-   
     var listaMoedasFavoritas: [Criptomoeda] = []
     
-    var listaDePreferidas: [Favoritos] = []
-
+    var listaDePreferidas: [String] = []
+    
+    let defaults = UserDefaults.standard
     
     // MARK: - Ciclo de Vida
 
@@ -45,7 +42,10 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        recarregarDados()
+        verificarFavoritas()
+        DispatchQueue.main.async {
+            self.myCollection.reloadData()
+        }
     }
     
     
@@ -61,33 +61,18 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
     // MARK: - Funções
     
     
-    func recarregarDados() {
-        guard let moedaCompartilhada = MoedaGlobal.moedaInstanciada.moedaCompartilhada else {return}
-        verificarFavoritas()
-        recuperaDados(listaSiglasFavoritas, moedaCompartilhada)
-        DispatchQueue.main.async {
-            self.myCollection.reloadData()
-        }
-    }
-    
     func verificarFavoritas() {
-        listaDePreferidas = []
-        listaSiglasFavoritas = []
-        listaDePreferidas = moedaDAO.recuperaFavoritos()
-        let numeroMoedasFavoritas = listaDePreferidas.count
-        if numeroMoedasFavoritas > 0 {
-            for i in 0...(listaDePreferidas.count - 1) {
-                guard let sigla = listaDePreferidas[i].lista else {return}
-                listaSiglasFavoritas.append(sigla)
-            }
-        }
-    }
-    
-    func recuperaDados(_ listaSiglasFavoritas: [String], _ moedaCompartilhada: [Criptomoeda]) {
+        guard let moedaCompartilhada = MoedaGlobal.moedaInstanciada.moedaCompartilhada else {return}
+        listaDePreferidas = defaults.object(forKey: "listaSiglas") as? [String] ?? []
         listaMoedasFavoritas = []
+        recuperaDados(listaDePreferidas, moedaCompartilhada)
+    }
+ 
+    
+    func recuperaDados(_ listaDePreferidas: [String], _ moedaCompartilhada: [Criptomoeda]) {
         for i in 0...moedaCompartilhada.count-1 {
             let sigla = moedaCompartilhada[i].sigla
-            if listaSiglasFavoritas.contains(sigla) {
+            if listaDePreferidas.contains(sigla) {
                 listaMoedasFavoritas.append(moedaCompartilhada[i])
             }
         }
@@ -129,6 +114,9 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
 extension FavoritosViewController: ReloadDataDelegate {
 
     func reloadDataAction() {
-        recarregarDados()
+        verificarFavoritas()
+        DispatchQueue.main.async {
+            self.myCollection.reloadData()
+        }
     }
 }

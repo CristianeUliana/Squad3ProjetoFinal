@@ -29,19 +29,19 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
     
     let detalhes = DetalhesMoeda.fromNib()
     
-    let moedaDAO = MoedaDao()
-    
     var moedaSelecionada: Criptomoeda?
     
-    var sigla: String?
+//    var sigla: String?
+//
+//    var ehFavorita: Bool = false
+//
+//    var moedaFavorita: Favoritos?
+//
+//    var indiceFavorita: Int?
     
-    var ehFavorita: Bool = false
+    var listaDePreferidas: [String] = []
     
-    var moedaFavorita: Favoritos?
-    
-    var indiceFavorita: Int?
-    
-    var listaDePreferidas: [Favoritos] = []
+    let defaults = UserDefaults.standard
     
     
     // MARK: - Ciclo de Vida
@@ -53,9 +53,11 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        listaDePreferidas = moedaDAO.recuperaFavoritos()
-        sigla = verificarMoeda()
-        detalhes.verificarFavoritos(ehFavorita)
+        
+        listaDePreferidas = defaults.object(forKey: "listaSiglas") as? [String] ?? []
+        
+        configurarTelaFavorita()
+        
         detalhes.setupUI(moedaDelegate: self)
     }
     
@@ -66,30 +68,28 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
     
     // MARK: - Métodos
     
+    
+    
+//    func verificarMoeda() {
+//        guard let sigla = moedaSelecionada?.sigla else { return "" }
+//
+//    }
+    
+    
+    
+    func configurarTelaFavorita() {
 
-    func verificarMoeda() -> String {
-        guard let sigla = moedaSelecionada?.sigla else { return "" }
-        verificarFavorita(sigla)
+        guard let sigla = moedaSelecionada?.sigla else {return}
         detalhes.makeRequestDetalhes(sigla, "estrelaDetalhes")
-        return sigla
-    }
-    
-    
-    func verificarFavorita(_ sigla: String) {
-        if (listaDePreferidas.count) > 0 {
-            for i in 0...(listaDePreferidas.count - 1) {
-                if listaDePreferidas[i].lista == sigla {
-                    self.ehFavorita = true
-                    self.indiceFavorita = i
-                    break
-                } else {
-                    ehFavorita = false
-                }
-            }
+        
+        if listaDePreferidas.contains(sigla) {
+            detalhes.verificarFavoritos(true)
         } else {
-            ehFavorita = false
+            detalhes.verificarFavoritos(false)
         }
     }
+    
+    
  
     // MARK: - DelegateBotão
     
@@ -97,18 +97,32 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
 
     func buttonAction() {
         guard let sigla = moedaSelecionada?.sigla else {return}
-        if ehFavorita == false {
-            moedaDAO.adicionarMoeda(sigla)
-            detalhes.verificarFavoritos(true)
-        } else {
-            removerMoedaFavorita(sigla)
+        
+        if listaDePreferidas.contains(sigla) {
+            
+            let listaAtualizada = removerDaLista(sigla)
+            defaults.set(listaAtualizada, forKey: "listaSiglas")
+            
             detalhes.verificarFavoritos(false)
+            
+        } else {
+            
+            listaDePreferidas.append(sigla)
+            defaults.set(listaDePreferidas, forKey: "listaSiglas")
+            
+            detalhes.verificarFavoritos(true)
         }
     }
-
-    func removerMoedaFavorita(_ sigla: String) {
-        let moedaRemovidaList = listaDePreferidas.filter {$0.lista == sigla}
-        guard let moedaRemovida = moedaRemovidaList.first else {return}
-        moedaDAO.deletarMoeda(moedaRemovida)
+    
+    
+    
+    func removerDaLista(_ sigla: String) -> [String] {
+        for i in 0...listaDePreferidas.count-1 {
+            if listaDePreferidas[i] == sigla {
+                listaDePreferidas.remove(at: i)
+                break
+            }
+        }
+        return listaDePreferidas
     }
 }
