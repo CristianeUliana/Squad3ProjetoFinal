@@ -45,14 +45,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.pesquisarMoeda.delegate = self
         dataLabel.text = mostrarDataAtual()
         accessibilityMoedas()
-        request.makeRequestTelaPrincipal { (listaDeMoedas) in
-            self.listaDeMoedas = listaDeMoedas
-            self.listaDePesquisa = self.listaDeMoedas
-            MoedaGlobal.moedaInstanciada.moedaCompartilhada = self.listaDeMoedas
-            DispatchQueue.main.async {
-                self.listaMoedasTable.reloadData()
-            }
-        }
+        makeRequest()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,7 +53,6 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
         listaDePreferidas = defaults.object(forKey: "listaSiglas") as? [String] ?? []
         listaMoedasTable.reloadData()
     }
-
     
     // MARK: - Acessibilidades
     
@@ -74,6 +66,19 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     
+
+    func makeRequest() {
+        request.makeRequestTelaPrincipal { (listaDeMoedas) in
+            self.listaDeMoedas = listaDeMoedas
+            self.listaDePesquisa = self.listaDeMoedas
+            MoedaGlobal.moedaInstanciada.moedaCompartilhada = self.listaDeMoedas
+            DispatchQueue.main.async {
+                self.listaMoedasTable.reloadData()
+            }
+        }
+    }
+
+
     // MARK: - TableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
