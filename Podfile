@@ -18,6 +18,10 @@ target 'ProjetoFinalSquad3' do
   target 'ProjetoFinalSquad3Tests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Nimble'
+    pod 'Quick'
+    pod 'Nimble-Snapshots'
+    pod "Cuckoo"
   end
 
   target 'ProjetoFinalSquad3UITests' do

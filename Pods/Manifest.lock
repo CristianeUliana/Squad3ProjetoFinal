@@ -3,23 +3,47 @@ PODS:
   - AlamofireImage (4.1.0):
     - Alamofire (~> 5.1)
   - Commons (0.1.0)
+  - Cuckoo (1.4.2):
+    - Cuckoo/Swift (= 1.4.2)
+  - Cuckoo/Swift (1.4.2)
   - DetalhesMoedas (0.1.0):
     - Alamofire (~> 5.4.1)
     - AlamofireImage (~> 4.1.0)
     - Commons
+  - iOSSnapshotTestCase (6.2.0):
+    - iOSSnapshotTestCase/SwiftSupport (= 6.2.0)
+  - iOSSnapshotTestCase/Core (6.2.0)
+  - iOSSnapshotTestCase/SwiftSupport (6.2.0):
+    - iOSSnapshotTestCase/Core
+  - Nimble (9.0.1)
+  - Nimble-Snapshots (9.1.0):
+    - Nimble-Snapshots/Core (= 9.1.0)
+  - Nimble-Snapshots/Core (9.1.0):
+    - iOSSnapshotTestCase (~> 6.0)
+    - Nimble
+  - Quick (3.1.2)
   - SwiftLint (0.43.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.4.1)
   - AlamofireImage (~> 4.1.0)
   - Commons (from `https://github.com/leojportes/Commons.git`, branch `develop`)
+  - Cuckoo
   - DetalhesMoedas (from `https://github.com/CristianeUliana/DetalhesMoedas.git`)
+  - Nimble
+  - Nimble-Snapshots
+  - Quick
   - SwiftLint
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireImage
+    - Cuckoo
+    - iOSSnapshotTestCase
+    - Nimble
+    - Nimble-Snapshots
+    - Quick
     - SwiftLint
 
 EXTERNAL SOURCES:
@@ -41,9 +65,14 @@ SPEC CHECKSUMS:
   Alamofire: bfbc4c2fe5909b1d94fb4ef2277c6b3727ef5dae
   AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
   Commons: d2d9b0d6ebb0ad6fb0a7fa3601815badbb488bab
+  Cuckoo: 4a54e93502b9ad06addcbd868ed203d96a64a299
   DetalhesMoedas: aa5327f7edd176367410245348f7866abb23edad
+  iOSSnapshotTestCase: 9ab44cb5aa62b84d31847f40680112e15ec579a6
+  Nimble: 7bed62ffabd6dbfe05f5925cbc43722533248990
+  Nimble-Snapshots: 6605431525245f967ca9d558bb12a49da3d040e3
+  Quick: 60f0ea3b8e0cfc0df3259a5c06a238ad8b3c46e0
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
 
-PODFILE CHECKSUM: 23a4bd8501c97260905d6180d8cf745813c54630
+PODFILE CHECKSUM: 94fe6fb923a70e8f35a9fbd4d2a81ff96ebc6e23
 
 COCOAPODS: 1.10.1

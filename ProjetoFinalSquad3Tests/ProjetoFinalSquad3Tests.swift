@@ -17,6 +17,16 @@ class ProjetoFinalSquad3Tests: XCTestCase {
     
     
     
+    override func setUp() {
+        super.setUp()
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+    }
+    
+
+    
     func testFormatadorDeNumero() {
         
         let numero1: Double = 0
@@ -50,9 +60,5 @@ class ProjetoFinalSquad3Tests: XCTestCase {
 //        
    
 
-    func testPerformanceExample() throws {
-        self.measure {
-    
-        }
-    }
+   
 }

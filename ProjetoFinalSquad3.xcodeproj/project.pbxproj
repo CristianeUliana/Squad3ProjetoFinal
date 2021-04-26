@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		016E90CA43743D374C189153 /* Pods_ProjetoFinalSquad3Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 778BF33D15DC09A408C263B3 /* Pods_ProjetoFinalSquad3Tests.framework */; };
 		3E57C995263319D600281E2E /* MoedaGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E57C994263319D600281E2E /* MoedaGlobal.swift */; };
+		3E67B153263708A50062D2CB /* SnapshotTestCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67B152263708A50062D2CB /* SnapshotTestCollectionCell.swift */; };
+		3E67B15826370A5E0062D2CB /* SnapshotTestTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67B15726370A5E0062D2CB /* SnapshotTestTableCell.swift */; };
+		3E67B17B26372F580062D2CB /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67B17A26372F580062D2CB /* GeneratedMocks.swift */; };
+		3E67B1832637318B0062D2CB /* DetalhesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67B1822637318B0062D2CB /* DetalhesViewControllerTests.swift */; };
 		3E8ADBFA262A53D100FE0292 /* FavoritosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8ADBF9262A53D100FE0292 /* FavoritosViewController.swift */; };
 		3E8ADC00262A56D400FE0292 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8ADBFE262A56D400FE0292 /* CustomCollectionViewCell.swift */; };
 		3E8ADC01262A56D400FE0292 /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E8ADBFF262A56D400FE0292 /* CustomCollectionViewCell.xib */; };
@@ -54,6 +58,10 @@
 		120F8925ED186C18BEBA3E31 /* Pods-ProjetoFinalSquad3Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjetoFinalSquad3Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjetoFinalSquad3Tests/Pods-ProjetoFinalSquad3Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		1C6B441A34FC7EB92685C9EB /* Pods-ProjetoFinalSquad3UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjetoFinalSquad3UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjetoFinalSquad3UITests/Pods-ProjetoFinalSquad3UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3E57C994263319D600281E2E /* MoedaGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoedaGlobal.swift; sourceTree = "<group>"; };
+		3E67B152263708A50062D2CB /* SnapshotTestCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTestCollectionCell.swift; sourceTree = "<group>"; };
+		3E67B15726370A5E0062D2CB /* SnapshotTestTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTestTableCell.swift; sourceTree = "<group>"; };
+		3E67B17A26372F580062D2CB /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
+		3E67B1822637318B0062D2CB /* DetalhesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalhesViewControllerTests.swift; sourceTree = "<group>"; };
 		3E8ADBF9262A53D100FE0292 /* FavoritosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritosViewController.swift; sourceTree = "<group>"; };
 		3E8ADBFE262A56D400FE0292 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		3E8ADBFF262A56D400FE0292 /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -196,6 +204,10 @@
 			isa = PBXGroup;
 			children = (
 				AA6AA5D52625DF1000697A7D /* ProjetoFinalSquad3Tests.swift */,
+				3E67B1822637318B0062D2CB /* DetalhesViewControllerTests.swift */,
+				3E67B152263708A50062D2CB /* SnapshotTestCollectionCell.swift */,
+				3E67B15726370A5E0062D2CB /* SnapshotTestTableCell.swift */,
+				3E67B17A26372F580062D2CB /* GeneratedMocks.swift */,
 				AA6AA5D72625DF1000697A7D /* Info.plist */,
 			);
 			path = ProjetoFinalSquad3Tests;
@@ -276,6 +288,7 @@
 				AA6AA5B62625DF0E00697A7D /* Resources */,
 				AA6AA5FD2625E3CB00697A7D /* ShellScript */,
 				DD6DEE5D19541107CFD5877F /* [CP] Embed Pods Frameworks */,
+				3E67B17626372EE60062D2CB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -294,6 +307,7 @@
 				AA6AA5CD2625DF1000697A7D /* Sources */,
 				AA6AA5CE2625DF1000697A7D /* Frameworks */,
 				AA6AA5CF2625DF1000697A7D /* Resources */,
+				D0E7CED33C32B9ECEC5AD1D9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -396,6 +410,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3E67B17626372EE60062D2CB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\n# Define output file. Change \"$PROJECT_DIR/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"$PROJECT_DIR/${PROJECT_NAME}Tests/GeneratedMocks.swift\"\necho \"Generated Mocks File = $OUTPUT_FILE\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/${PROJECT_NAME}\"\necho \"Mocks Input Directory = $INPUT_DIR\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PODS_ROOT}/Cuckoo/run\" generate --testable \"$PROJECT_NAME\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"$INPUT_DIR/Provider/MoedaDao.swift\"\n\n# ... and so forth, the last line should never end with a backslash\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.\n";
+		};
 		786CEA43C57852A71EC6BC2C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -426,6 +457,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n${PODS_ROOT}/SwiftLint/swiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		D0E7CED33C32B9ECEC5AD1D9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ProjetoFinalSquad3Tests/Pods-ProjetoFinalSquad3Tests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ProjetoFinalSquad3Tests/Pods-ProjetoFinalSquad3Tests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ProjetoFinalSquad3Tests/Pods-ProjetoFinalSquad3Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		D100CF74C0D0CCC5264FD385 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -509,6 +557,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA6AA5D62625DF1000697A7D /* ProjetoFinalSquad3Tests.swift in Sources */,
+				3E67B1832637318B0062D2CB /* DetalhesViewControllerTests.swift in Sources */,
+				3E67B15826370A5E0062D2CB /* SnapshotTestTableCell.swift in Sources */,
+				3E67B153263708A50062D2CB /* SnapshotTestCollectionCell.swift in Sources */,
+				3E67B17B26372F580062D2CB /* GeneratedMocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
