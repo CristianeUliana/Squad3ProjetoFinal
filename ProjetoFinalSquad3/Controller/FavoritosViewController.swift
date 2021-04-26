@@ -93,35 +93,6 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
         }
     }
     
-  
-        
-    
-    
-
-//    func recuperaDados(_ listaSiglasFavoritas: [String]) {
-//        for sigla in listaSiglasFavoritas {
-//            request.makeRequestBySigla(sigla) { (resultado) in
-//                self.setupUI(resultado)
-//            }
-//        }
-//    }
-
-//    func setupUI(_ moeda: Criptomoeda) {
-//        self.listaMoedasFavoritas.append(moeda)
-//            DispatchQueue.main.async {
-//                self.myCollection.reloadData()
-//            }
-//    }
-    
-    
-        
-//        verificarFavoritas { (resultado) in
-//            self.recuperaDados(resultado)
-//        }
-//        DispatchQueue.main.async {
-//            self.myCollection.reloadData()
-//        }
-//    }
     
 
     // MARK: - CollectionView
@@ -158,6 +129,6 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
 extension FavoritosViewController: ReloadDataDelegate {
 
     func reloadDataAction() {
-        //recarregarDados()
+        recarregarDados()
     }
 }

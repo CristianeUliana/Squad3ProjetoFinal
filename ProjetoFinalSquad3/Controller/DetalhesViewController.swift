@@ -93,6 +93,8 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
  
     // MARK: - DelegateBotão
     
+    
+
     func buttonAction() {
         guard let sigla = moedaSelecionada?.sigla else {return}
         if ehFavorita == false {
@@ -103,7 +105,7 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
             detalhes.verificarFavoritos(false)
         }
     }
-    
+
     func removerMoedaFavorita(_ sigla: String) {
         let moedaRemovidaList = listaDePreferidas.filter {$0.lista == sigla}
         guard let moedaRemovida = moedaRemovidaList.first else {return}

@@ -234,8 +234,8 @@
 			children = (
 				3E9939BE262F1A1F002F0907 /* TableCell */,
 				3E9939BD262F1A12002F0907 /* CollectionCell */,
-				AA6AA5C92625DF1000697A7D /* LaunchScreen.storyboard */,
 				AA6AA5C12625DF0E00697A7D /* Main.storyboard */,
+				AA6AA5C92625DF1000697A7D /* LaunchScreen.storyboard */,
 				AA6AA5C72625DF1000697A7D /* Assets.xcassets */,
 			);
 			path = View;
