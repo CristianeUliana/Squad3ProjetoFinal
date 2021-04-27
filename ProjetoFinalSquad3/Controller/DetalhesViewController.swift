@@ -31,14 +31,6 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
     
     var moedaSelecionada: Criptomoeda?
     
-//    var sigla: String?
-//
-//    var ehFavorita: Bool = false
-//
-//    var moedaFavorita: Favoritos?
-//
-//    var indiceFavorita: Int?
-    
     var listaDePreferidas: [String] = []
     
     let defaults = UserDefaults.standard
@@ -53,11 +45,8 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         listaDePreferidas = defaults.object(forKey: "listaSiglas") as? [String] ?? []
-        
         configurarTelaFavorita()
-        
         detalhes.setupUI(moedaDelegate: self)
     }
     
@@ -67,21 +56,11 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
     }
     
     // MARK: - Métodos
-    
-    
-    
-//    func verificarMoeda() {
-//        guard let sigla = moedaSelecionada?.sigla else { return "" }
-//
-//    }
-    
-    
+
     
     func configurarTelaFavorita() {
-
         guard let sigla = moedaSelecionada?.sigla else {return}
         detalhes.makeRequestDetalhes(sigla, "estrelaDetalhes")
-        
         if listaDePreferidas.contains(sigla) {
             detalhes.verificarFavoritos(true)
         } else {
@@ -97,19 +76,13 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
 
     func buttonAction() {
         guard let sigla = moedaSelecionada?.sigla else {return}
-        
         if listaDePreferidas.contains(sigla) {
-            
             let listaAtualizada = removerDaLista(sigla)
             defaults.set(listaAtualizada, forKey: "listaSiglas")
-            
             detalhes.verificarFavoritos(false)
-            
         } else {
-            
             listaDePreferidas.append(sigla)
             defaults.set(listaDePreferidas, forKey: "listaSiglas")
-            
             detalhes.verificarFavoritos(true)
         }
     }

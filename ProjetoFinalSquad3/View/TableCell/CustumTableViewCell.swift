@@ -18,11 +18,6 @@ class CustumTableViewCell: UITableViewCell {
     @IBOutlet weak var siglaLabel: UILabel!
     @IBOutlet weak var cotacaoLabel: UILabel!
     
-    
-    // MARK: - Variáveis
-    
-    var moedasFavoritas: Favoritos?
-    
 
     // MARK: - Funções
     

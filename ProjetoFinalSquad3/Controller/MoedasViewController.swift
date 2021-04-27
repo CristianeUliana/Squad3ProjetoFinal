@@ -66,6 +66,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     
+    // MARK: - Funções
 
     func makeRequest() {
         request.makeRequestTelaPrincipal { (listaDeMoedas) in

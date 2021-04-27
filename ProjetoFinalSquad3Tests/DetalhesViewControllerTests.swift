@@ -6,12 +6,11 @@
 //
 
 import XCTest
-
 @testable import ProjetoFinalSquad3
 
 class DetalhesViewControllerTests: XCTestCase {
 
-    
+    let controller = DetalhesViewController()
     var moedaSelecionada: Criptomoeda!
     var listaDePreferidas: [String] = ["USD","BTC","CAN"]
     
@@ -26,16 +25,15 @@ class DetalhesViewControllerTests: XCTestCase {
     }
 
     
-    func testDeveVerificarSeMoedaEstáNaListaDePreferidas() {
+    func testDeveRemoverMoedaDaListaDePreferidas() {
         
+        controller.listaDePreferidas = listaDePreferidas
+        let listaDePreferidasAtualizada = controller.removerDaLista(moedaSelecionada.sigla)
       
-        
+        XCTAssertEqual(2, listaDePreferidasAtualizada.count)
+        XCTAssertEqual(listaDePreferidasAtualizada[0], "USD")
+        XCTAssertEqual(listaDePreferidasAtualizada[1], "CAN")
 
     }
-    
-    
-    
-    
-    
 
 }
