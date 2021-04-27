@@ -20,7 +20,6 @@ class FavoritosViewControllerTests: XCTestCase {
     
     
     override func setUp() {
-        
         var contadorCripto = 1
         for _ in 0...10 {
             let moeda = Criptomoeda(sigla: "TST\(contadorCripto)", nome: "teste\(contadorCripto)", valor: 20.5 * Double(contadorCripto), imagem: "imagem\(contadorCripto)")
@@ -65,4 +64,8 @@ class FavoritosViewControllerTests: XCTestCase {
         
         XCTAssertEqual(3, controller.listaMoedasFavoritas.count)
     }
+    
+
+    
+    
 }

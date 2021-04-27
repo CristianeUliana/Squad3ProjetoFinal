@@ -24,6 +24,7 @@ class TableCellViewXibTests: QuickSpec {
             
             it("should have a cool layout") {
                 expect(view) == snapshot()
+                
             }
         }
     }

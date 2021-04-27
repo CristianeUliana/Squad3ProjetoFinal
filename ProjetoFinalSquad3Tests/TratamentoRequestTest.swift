@@ -31,6 +31,7 @@ class TratamentoRequestTest: XCTestCase {
         let respostaFake = MockTratamentoRequest().withEnabledSuperclassSpy()
 
         respostaFake.tratarErros(respostaHTTP)
+        
 
         verify(respostaFake).alertaWindow(titulo: "", message: "")
     }

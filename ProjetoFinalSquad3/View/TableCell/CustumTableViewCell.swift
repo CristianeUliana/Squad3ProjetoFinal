@@ -12,11 +12,11 @@ class CustumTableViewCell: UITableViewCell {
 
     // MARK: - IBOutlets
     
-    @IBOutlet weak var imagemCriptomoeda: UIImageView!
-    @IBOutlet weak var imagemDeFavoritos: UIImageView!
-    @IBOutlet weak var bitcoinLabel: UILabel!
-    @IBOutlet weak var siglaLabel: UILabel!
-    @IBOutlet weak var cotacaoLabel: UILabel!
+    @IBOutlet weak var imagemCriptomoeda: UIImageView?
+    @IBOutlet weak var imagemDeFavoritos: UIImageView?
+    @IBOutlet weak var bitcoinLabel: UILabel?
+    @IBOutlet weak var siglaLabel: UILabel?
+    @IBOutlet weak var cotacaoLabel: UILabel?
     
 
     // MARK: - Funções
@@ -30,22 +30,22 @@ class CustumTableViewCell: UITableViewCell {
     }
     
     func configuraCelula(_ moeda: Criptomoeda) {
-        bitcoinLabel.text = moeda.nome
-        siglaLabel.text = moeda.sigla
-        cotacaoLabel.text = String(moeda.valor.formatador())
+        bitcoinLabel?.text = moeda.nome
+        siglaLabel?.text = moeda.sigla
+        cotacaoLabel?.text = String(moeda.valor.formatador())
         let caminhoIcon = moeda.imagem
         let id = caminhoIcon.replacingOccurrences(of: "-", with: "")
         let url = ApiRest.UrlIcon.replacingOccurrences(of: "@@@", with: id)
         guard let urlCompleta = URL(string: url) else {return}
-        imagemCriptomoeda.af.setImage(withURL: urlCompleta)
+        imagemCriptomoeda?.af.setImage(withURL: urlCompleta)
     }
     
     func colocaEstrela(_ ehFavorito: Bool) {
-        imagemDeFavoritos.image = UIImage(named: "estrelaLista")
+        imagemDeFavoritos?.image = UIImage(named: "estrelaLista")
         if ehFavorito {
-            imagemDeFavoritos.isHidden = false
+            imagemDeFavoritos?.isHidden = false
         } else {
-            imagemDeFavoritos.isHidden = true
+            imagemDeFavoritos?.isHidden = true
         }
     }
 }

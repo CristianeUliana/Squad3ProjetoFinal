@@ -219,9 +219,9 @@
 		AA6AA5D42625DF1000697A7D /* ProjetoFinalSquad3Tests */ = {
 			isa = PBXGroup;
 			children = (
+				AA6AA5D52625DF1000697A7D /* ProjetoFinalSquad3Tests.swift */,
 				3E67B233263799970062D2CB /* FavoritosViewControllerTests.swift */,
 				3E67B1CB26375A780062D2CB /* TratamentoRequestTest.swift */,
-				AA6AA5D52625DF1000697A7D /* ProjetoFinalSquad3Tests.swift */,
 				3E67B1822637318B0062D2CB /* DetalhesViewControllerTests.swift */,
 				3E67B152263708A50062D2CB /* SnapshotTestCollectionCell.swift */,
 				3E67B15726370A5E0062D2CB /* SnapshotTestTableCell.swift */,

@@ -20,7 +20,7 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
     
     // MARK: - IBOutlets
     
-    @IBOutlet var telaDetalhes: UIStackView!
+    @IBOutlet var telaDetalhes: UIStackView?
     
     
     // MARK: - Variáveis
@@ -40,7 +40,7 @@ class DetalhesViewController: UIViewController, DetalhesMoedaDelegate, NSFetched
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        telaDetalhes.addSubview(detalhes)
+        telaDetalhes?.addSubview(detalhes)
     }
     
     override func viewWillAppear(_ animated: Bool) {

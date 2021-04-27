@@ -16,9 +16,9 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
      // MARK: - Outlets
    
-    @IBOutlet weak var dataLabel: UILabel!
-    @IBOutlet weak var listaMoedasTable: UITableView!
-    @IBOutlet weak var pesquisarMoeda: UISearchBar!
+    @IBOutlet weak var dataLabel: UILabel?
+    @IBOutlet weak var listaMoedasTable: UITableView?
+    @IBOutlet weak var pesquisarMoeda: UISearchBar?
     
     
     // MARK: - Variáveis
@@ -39,11 +39,11 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.listaMoedasTable.register(UINib(nibName: "CustumTableViewCell", bundle: nil), forCellReuseIdentifier: "CustumTableViewCell")
-        self.listaMoedasTable.delegate = self
-        self.listaMoedasTable.dataSource = self
-        self.pesquisarMoeda.delegate = self
-        dataLabel.text = mostrarDataAtual()
+        self.listaMoedasTable?.register(UINib(nibName: "CustumTableViewCell", bundle: nil), forCellReuseIdentifier: "CustumTableViewCell")
+        self.listaMoedasTable?.delegate = self
+        self.listaMoedasTable?.dataSource = self
+        self.pesquisarMoeda?.delegate = self
+        dataLabel?.text = mostrarDataAtual()
         accessibilityMoedas()
         makeRequest()
     }
@@ -51,18 +51,18 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         listaDePreferidas = defaults.object(forKey: "listaSiglas") as? [String] ?? []
-        listaMoedasTable.reloadData()
+        listaMoedasTable?.reloadData()
     }
     
     // MARK: - Acessibilidades
     
     func accessibilityMoedas() {
-        dataLabel.isAccessibilityElement = true
-        dataLabel.accessibilityTraits = .header
-        dataLabel.accessibilityLabel = "Data de Hoje"
-        pesquisarMoeda.isAccessibilityElement = true
-        pesquisarMoeda.accessibilityTraits = .searchField
-        pesquisarMoeda.accessibilityLabel = "Pesquisa Moeda"
+        dataLabel?.isAccessibilityElement = true
+        dataLabel?.accessibilityTraits = .header
+        dataLabel?.accessibilityLabel = "Data de Hoje"
+        pesquisarMoeda?.isAccessibilityElement = true
+        pesquisarMoeda?.accessibilityTraits = .searchField
+        pesquisarMoeda?.accessibilityLabel = "Pesquisa Moeda"
     }
     
     
@@ -74,7 +74,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.listaDePesquisa = self.listaDeMoedas
             MoedaGlobal.moedaInstanciada.moedaCompartilhada = self.listaDeMoedas
             DispatchQueue.main.async {
-                self.listaMoedasTable.reloadData()
+                self.listaMoedasTable?.reloadData()
             }
         }
     }
@@ -102,7 +102,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
         controller.moedaSelecionada = moedaSelecionada
         controller.delegate = self
         show(controller, sender: self)
-        listaMoedasTable.deselectRow(at: indexPath, animated: true)
+        listaMoedasTable?.deselectRow(at: indexPath, animated: true)
     }
 
 
@@ -116,7 +116,7 @@ class MoedasViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let moedasFiltradas = listaDePesquisa.filter { $0.nome.range(of: textoPesquisado, options: [.caseInsensitive]) != nil }
             listaDePesquisa = moedasFiltradas
         }
-      listaMoedasTable.reloadData()
+        listaMoedasTable?.reloadData()
     }
 }
 
@@ -128,7 +128,7 @@ extension MoedasViewController: ReloadDataDelegate {
     func reloadDataAction() {
         listaDePreferidas = defaults.object(forKey: "listaSiglas") as? [String] ?? []
         DispatchQueue.main.async {
-            self.listaMoedasTable.reloadData()
+            self.listaMoedasTable?.reloadData()
         }
     }
 }

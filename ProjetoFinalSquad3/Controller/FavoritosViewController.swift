@@ -14,8 +14,8 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
     
     // MARK: - Outlets
 
-    @IBOutlet weak var myCollection: UICollectionView!
-    @IBOutlet weak var dataLabel: UILabel!
+    @IBOutlet weak var myCollection: UICollectionView?
+    @IBOutlet weak var dataLabel: UILabel?
     
    
     
@@ -33,10 +33,10 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.myCollection.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
-        self.myCollection.delegate = self
-        self.myCollection.dataSource = self
-        dataLabel.text = mostrarDataAtual()
+        self.myCollection?.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
+        self.myCollection?.delegate = self
+        self.myCollection?.dataSource = self
+        dataLabel?.text = mostrarDataAtual()
         accessibilityFavoritos()
     }
     
@@ -44,7 +44,7 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
         super.viewWillAppear(animated)
         verificarFavoritas()
         DispatchQueue.main.async {
-            self.myCollection.reloadData()
+            self.myCollection?.reloadData()
         }
     }
     
@@ -52,9 +52,9 @@ class FavoritosViewController: UIViewController, UICollectionViewDataSource, UIC
     // MARK: - Acessibilidades
     
     func accessibilityFavoritos() {
-        dataLabel.isAccessibilityElement = true
-        dataLabel.accessibilityTraits = .header
-        dataLabel.accessibilityLabel = "Data de Hoje"
+        dataLabel?.isAccessibilityElement = true
+        dataLabel?.accessibilityTraits = .header
+        dataLabel?.accessibilityLabel = "Data de Hoje"
     }
     
 
@@ -116,7 +116,7 @@ extension FavoritosViewController: ReloadDataDelegate {
     func reloadDataAction() {
         verificarFavoritas()
         DispatchQueue.main.async {
-            self.myCollection.reloadData()
+            self.myCollection?.reloadData()
         }
     }
 }

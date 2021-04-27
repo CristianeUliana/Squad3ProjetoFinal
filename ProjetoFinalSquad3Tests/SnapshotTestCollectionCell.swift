@@ -24,6 +24,7 @@ class CollectionCellViewXibTests: QuickSpec {
             
             it("should have a cool layout") {
                 expect(view) == snapshot()
+                
             }
         }
     }
