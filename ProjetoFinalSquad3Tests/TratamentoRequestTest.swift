@@ -31,9 +31,11 @@ class TratamentoRequestTest: XCTestCase {
         let respostaFake = MockTratamentoRequest().withEnabledSuperclassSpy()
 
         respostaFake.tratarErros(respostaHTTP)
-        
+        stub(respostaFake) { (respostaFake) in
+            when(respostaFake.alertaWindow(titulo: MensagemDeErro.titulo400, message: MensagemDeErro.mensagem400)).thenDoNothing()
+        }
 
-        verify(respostaFake).alertaWindow(titulo: "", message: "")
+        verify(respostaFake).alertaWindow(titulo: MensagemDeErro.titulo400, message: MensagemDeErro.mensagem400)
     }
     
 

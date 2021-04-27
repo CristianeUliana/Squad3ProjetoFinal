@@ -13,20 +13,21 @@ import DetalhesMoedas
 
 class DetalhesViewXibTests: QuickSpec {
     
-//    override func spec() {
-//        describe("DetalhesMoeda"){
-//            var view: DetalhesMoeda!
-//            
-//            beforeEach {
+    override func spec() {
+        describe("DetalhesMoeda"){
+            var view: DetalhesMoeda!
+            
+            beforeEach {
+                view = DetalhesMoeda.fromNib()
 //                view = Bundle.main.loadNibNamed("DetalhesMoeda",
 //                                                owner: nil,
 //                                                options: nil)?.first as? DetalhesMoeda
-//            }
-//            
-//            it("should have a cool layout") {
-//                expect(view) == recordSnapshot()
-//            }
-//        }
-//    }
+            }
+            
+            it("should have a cool layout") {
+                expect(view) == snapshot()
+            }
+        }
+    }
 }
 
