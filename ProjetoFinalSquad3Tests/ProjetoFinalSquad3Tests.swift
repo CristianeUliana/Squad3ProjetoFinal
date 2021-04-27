@@ -18,7 +18,7 @@ class ProjetoFinalSquad3Tests: XCTestCase {
     var customCollectionViewCell: CustomCollectionViewCell!
     
     var listaDeCriptomoedas: [Criptomoeda] = []
-    var listaMoedasFavoritas: [Criptomoeda] = []
+    
     
     
     
@@ -30,35 +30,12 @@ class ProjetoFinalSquad3Tests: XCTestCase {
             listaDeCriptomoedas.append(moeda)
             contadorCripto += 1
         }
-        
-        
-        moedaViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MoedasViewController") as! MoedasViewController
-        _ = moedaViewController.view
-        
-        favoritosViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "favoritosViewController") as! FavoritosViewController
-        _ = favoritosViewController.view
-        
     }
     
     override func tearDown() {
         super.tearDown()
     }
-    
-    func testNumeroDeItensDaTabelaDeveSerIgualAQuantidadeDeDadosDoArray() {
-        
-        moedaViewController.listaDePesquisa = listaDeCriptomoedas
-        
-        XCTAssertEqual(moedaViewController.listaMoedasTable?.numberOfRows(inSection: 0), 11, "Numero de rows na tabela deve ser igual a 11")
-    }
-    
-    func testNumeroDeItensDaCollectionDeveSerIgualAQuantidadeDeDadosDoArray() {
-        
-        favoritosViewController.listaMoedasFavoritas = listaDeCriptomoedas
-        
-        XCTAssertEqual(favoritosViewController.myCollection?.numberOfItems(inSection: 0), 11, "Numero de itens na collection deve ser igual a 11")
-    }
-    
-    
+  
 
     func testeMoedaViewController() throws {
         moedaViewController = MoedasViewController()
@@ -114,6 +91,11 @@ class ProjetoFinalSquad3Tests: XCTestCase {
         customCollectionViewCell.configuraCelula(moeda)
         
     }
+    
+    
+    
+    
+    
     
     
 }

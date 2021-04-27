@@ -19,6 +19,7 @@
 		3E8ADC00262A56D400FE0292 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8ADBFE262A56D400FE0292 /* CustomCollectionViewCell.swift */; };
 		3E8ADC01262A56D400FE0292 /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E8ADBFF262A56D400FE0292 /* CustomCollectionViewCell.xib */; };
 		3E9939C1262F1A63002F0907 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9939C0262F1A63002F0907 /* Request.swift */; };
+		3EE547F12638983F007E5278 /* MoedasViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE547F02638983F007E5278 /* MoedasViewControllerTests.swift */; };
 		9979F322E48885F62F9C6600 /* Pods_ProjetoFinalSquad3Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B22820D0142F8D5E5E5C155 /* Pods_ProjetoFinalSquad3Tests.framework */; };
 		AA08198E262719CC00B444B4 /* MoedaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA08198D262719CC00B444B4 /* MoedaViewModel.swift */; };
 		AA0819A22627748500B444B4 /* Moeda.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0819A12627748500B444B4 /* Moeda.swift */; };
@@ -72,6 +73,7 @@
 		3E8ADBFE262A56D400FE0292 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		3E8ADBFF262A56D400FE0292 /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
 		3E9939C0262F1A63002F0907 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		3EE547F02638983F007E5278 /* MoedasViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoedasViewControllerTests.swift; sourceTree = "<group>"; };
 		404728E3B989EB7FE0FA1F8F /* Pods-ProjetoFinalSquad3UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjetoFinalSquad3UITests.debug.xcconfig"; path = "Target Support Files/Pods-ProjetoFinalSquad3UITests/Pods-ProjetoFinalSquad3UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		82BD3A08896F2C5E73ADE019 /* Pods-ProjetoFinalSquad3Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjetoFinalSquad3Tests.debug.xcconfig"; path = "Target Support Files/Pods-ProjetoFinalSquad3Tests/Pods-ProjetoFinalSquad3Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		8DD9D2B42FC7FFA17AB0FC57 /* Pods-ProjetoFinalSquad3Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjetoFinalSquad3Tests.release.xcconfig"; path = "Target Support Files/Pods-ProjetoFinalSquad3Tests/Pods-ProjetoFinalSquad3Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -220,9 +222,10 @@
 			isa = PBXGroup;
 			children = (
 				AA6AA5D52625DF1000697A7D /* ProjetoFinalSquad3Tests.swift */,
+				3EE547F02638983F007E5278 /* MoedasViewControllerTests.swift */,
+				3E67B1822637318B0062D2CB /* DetalhesViewControllerTests.swift */,
 				3E67B233263799970062D2CB /* FavoritosViewControllerTests.swift */,
 				3E67B1CB26375A780062D2CB /* TratamentoRequestTest.swift */,
-				3E67B1822637318B0062D2CB /* DetalhesViewControllerTests.swift */,
 				3E67B152263708A50062D2CB /* SnapshotTestCollectionCell.swift */,
 				3E67B15726370A5E0062D2CB /* SnapshotTestTableCell.swift */,
 				3E67B23B2637A23C0062D2CB /* SnapshotDetalhesViewController.swift */,
@@ -579,6 +582,7 @@
 				3E67B29A2637A8E00062D2CB /* GeneratedMocks.swift in Sources */,
 				3E67B1832637318B0062D2CB /* DetalhesViewControllerTests.swift in Sources */,
 				3E67B234263799970062D2CB /* FavoritosViewControllerTests.swift in Sources */,
+				3EE547F12638983F007E5278 /* MoedasViewControllerTests.swift in Sources */,
 				3E67B15826370A5E0062D2CB /* SnapshotTestTableCell.swift in Sources */,
 				3E67B153263708A50062D2CB /* SnapshotTestCollectionCell.swift in Sources */,
 			);

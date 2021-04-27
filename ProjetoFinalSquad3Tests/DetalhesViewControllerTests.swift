@@ -25,6 +25,7 @@ class DetalhesViewControllerTests: XCTestCase {
     }
 
     
+    
     func testDeveRemoverMoedaDaListaDePreferidas() {
         
         controller.listaDePreferidas = listaDePreferidas
