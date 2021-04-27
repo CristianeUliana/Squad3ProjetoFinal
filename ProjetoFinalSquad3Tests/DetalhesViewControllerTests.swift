@@ -36,4 +36,19 @@ class DetalhesViewControllerTests: XCTestCase {
 
     }
 
+    func testFormatadorDeNumero() {
+        
+        let numero1: Double = 0
+        let numero2: Double = -10
+        let numero3: Double = 9999999
+        
+        let resultado1 = numero1.formatador()
+        let resultado2 = numero2.formatador()
+        let resultado3 = numero3.formatador()
+        
+        XCTAssertEqual(resultado1, "$ 0,00")
+        XCTAssertEqual(resultado2, "$ -10,00")
+        XCTAssertEqual(resultado3, "$ 9.999.999,00")
+    }
+    
 }

@@ -17,32 +17,47 @@ class ProjetoFinalSquad3Tests: XCTestCase {
     var customTableViewCell: CustumTableViewCell!
     var customCollectionViewCell: CustomCollectionViewCell!
     
+    var listaDeCriptomoedas: [Criptomoeda] = []
+    var listaMoedasFavoritas: [Criptomoeda] = []
+    
     
     
     override func setUp() {
         super.setUp()
+        var contadorCripto = 1
+        for _ in 0...10 {
+            let moeda = Criptomoeda(sigla: "TST\(contadorCripto)", nome: "teste\(contadorCripto)", valor: 20.5 * Double(contadorCripto), imagem: "imagem\(contadorCripto)")
+            listaDeCriptomoedas.append(moeda)
+            contadorCripto += 1
+        }
+        
+        
+        moedaViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MoedasViewController") as! MoedasViewController
+        _ = moedaViewController.view
+        
+        favoritosViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "favoritosViewController") as! FavoritosViewController
+        _ = favoritosViewController.view
+        
     }
     
     override func tearDown() {
         super.tearDown()
     }
     
-
-    
-    func testFormatadorDeNumero() {
+    func testNumeroDeItensDaTabelaDeveSerIgualAQuantidadeDeDadosDoArray() {
         
-        let numero1: Double = 0
-        let numero2: Double = -10
-        let numero3: Double = 9999999
+        moedaViewController.listaDePesquisa = listaDeCriptomoedas
         
-        let resultado1 = numero1.formatador()
-        let resultado2 = numero2.formatador()
-        let resultado3 = numero3.formatador()
-        
-        XCTAssertEqual(resultado1, "$ 0,00")
-        XCTAssertEqual(resultado2, "$ -10,00")
-        XCTAssertEqual(resultado3, "$ 9.999.999,00")
+        XCTAssertEqual(moedaViewController.listaMoedasTable?.numberOfRows(inSection: 0), 11, "Numero de rows na tabela deve ser igual a 11")
     }
+    
+    func testNumeroDeItensDaCollectionDeveSerIgualAQuantidadeDeDadosDoArray() {
+        
+        favoritosViewController.listaMoedasFavoritas = listaDeCriptomoedas
+        
+        XCTAssertEqual(favoritosViewController.myCollection?.numberOfItems(inSection: 0), 11, "Numero de itens na collection deve ser igual a 11")
+    }
+    
     
 
     func testeMoedaViewController() throws {
