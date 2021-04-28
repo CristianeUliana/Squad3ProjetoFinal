@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E1E0D6026398AAC0022BA7C /* RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1E0D5F26398AAC0022BA7C /* RequestTests.swift */; };
 		3E57C995263319D600281E2E /* MoedaGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E57C994263319D600281E2E /* MoedaGlobal.swift */; };
 		3E67B153263708A50062D2CB /* SnapshotTestCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67B152263708A50062D2CB /* SnapshotTestCollectionCell.swift */; };
 		3E67B15826370A5E0062D2CB /* SnapshotTestTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E67B15726370A5E0062D2CB /* SnapshotTestTableCell.swift */; };
@@ -61,6 +62,7 @@
 		1B22820D0142F8D5E5E5C155 /* Pods_ProjetoFinalSquad3Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjetoFinalSquad3Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		257399DC5149FB51AEC463D9 /* Pods_ProjetoFinalSquad3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjetoFinalSquad3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC85A36A3B2CFB11E3F2161 /* Pods-ProjetoFinalSquad3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjetoFinalSquad3.debug.xcconfig"; path = "Target Support Files/Pods-ProjetoFinalSquad3/Pods-ProjetoFinalSquad3.debug.xcconfig"; sourceTree = "<group>"; };
+		3E1E0D5F26398AAC0022BA7C /* RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTests.swift; sourceTree = "<group>"; };
 		3E57C994263319D600281E2E /* MoedaGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoedaGlobal.swift; sourceTree = "<group>"; };
 		3E67B152263708A50062D2CB /* SnapshotTestCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTestCollectionCell.swift; sourceTree = "<group>"; };
 		3E67B15726370A5E0062D2CB /* SnapshotTestTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTestTableCell.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				3EE547F02638983F007E5278 /* MoedasViewControllerTests.swift */,
 				3E67B1822637318B0062D2CB /* DetalhesViewControllerTests.swift */,
 				3E67B233263799970062D2CB /* FavoritosViewControllerTests.swift */,
+				3E1E0D5F26398AAC0022BA7C /* RequestTests.swift */,
 				3E67B1CB26375A780062D2CB /* TratamentoRequestTest.swift */,
 				3E67B152263708A50062D2CB /* SnapshotTestCollectionCell.swift */,
 				3E67B15726370A5E0062D2CB /* SnapshotTestTableCell.swift */,
@@ -581,6 +584,7 @@
 				AA6AA5D62625DF1000697A7D /* ProjetoFinalSquad3Tests.swift in Sources */,
 				3E67B29A2637A8E00062D2CB /* GeneratedMocks.swift in Sources */,
 				3E67B1832637318B0062D2CB /* DetalhesViewControllerTests.swift in Sources */,
+				3E1E0D6026398AAC0022BA7C /* RequestTests.swift in Sources */,
 				3E67B234263799970062D2CB /* FavoritosViewControllerTests.swift in Sources */,
 				3EE547F12638983F007E5278 /* MoedasViewControllerTests.swift in Sources */,
 				3E67B15826370A5E0062D2CB /* SnapshotTestTableCell.swift in Sources */,

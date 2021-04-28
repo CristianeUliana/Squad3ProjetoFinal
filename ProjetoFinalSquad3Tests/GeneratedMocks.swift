@@ -1,4 +1,4 @@
-// MARK: - Mocks generated from file: ProjetoFinalSquad3/Model/TratamentoRequest.swift at 2021-04-27 20:40:01 +0000
+// MARK: - Mocks generated from file: ProjetoFinalSquad3/Model/TratamentoRequest.swift at 2021-04-28 12:33:08 +0000
 
 //
 //  TratamentoRequest.swift

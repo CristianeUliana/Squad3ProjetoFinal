@@ -44,29 +44,4 @@ class Request {
             }
         task.resume()
     }
-
-    
-    // MARK: - RequestPorSigla
-
-    func makeRequestBySigla(_ sigla: String, completion: @escaping(Criptomoeda) -> Void) {
-       let newUrl = ApiRest.MoedaDetalhe.replacingOccurrences(of: "@@@", with: sigla)
-        let url = URL(string: newUrl)!
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            print(response as Any)
-            guard let responseData = data else { return }
-            do {
-                let moedas = try JSONDecoder().decode(Moedas.self, from: responseData)
-                for moeda in moedas {
-                    guard let nome = moeda.name else {return}
-                    guard let valor = moeda.priceUsd else {return}
-                    guard let imagem = moeda.idIcon else {return}
-                    let criptoMoeda = Criptomoeda(sigla: sigla, nome: nome, valor: valor, imagem: imagem)
-                    completion(criptoMoeda)
-                }
-            } catch let error {
-                print("error: \(error)")
-            }
-        }
-        task.resume()
-    }
 }
