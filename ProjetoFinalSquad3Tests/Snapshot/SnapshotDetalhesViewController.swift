@@ -19,9 +19,7 @@ class DetalhesViewXibTests: QuickSpec {
             
             beforeEach {
                 view = DetalhesMoeda.fromNib()
-//                view = Bundle.main.loadNibNamed("DetalhesMoeda",
-//                                                owner: nil,
-//                                                options: nil)?.first as? DetalhesMoeda
+
             }
             
             it("should have a cool layout") {
