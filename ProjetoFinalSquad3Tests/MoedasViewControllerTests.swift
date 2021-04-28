@@ -51,4 +51,14 @@ class MoedasViewControllerTests: XCTestCase {
         XCTAssertEqual(terceiraCell.siglaLabel?.text, "TST3")
        
     }
+    
+    
+    func testTableViewNaoDeveEstarNilAposViewDidLoad() {
+        let sut = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MoedasViewController") as! MoedasViewController
+        _ = sut.view
+        
+        XCTAssertNotNil(sut.listaMoedasTable)
+    }
+    
+    
 }

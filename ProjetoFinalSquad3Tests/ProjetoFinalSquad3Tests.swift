@@ -17,19 +17,9 @@ class ProjetoFinalSquad3Tests: XCTestCase {
     var customTableViewCell: CustumTableViewCell!
     var customCollectionViewCell: CustomCollectionViewCell!
     
-    var listaDeCriptomoedas: [Criptomoeda] = []
-    
-    
-    
     
     override func setUp() {
         super.setUp()
-        var contadorCripto = 1
-        for _ in 0...10 {
-            let moeda = Criptomoeda(sigla: "TST\(contadorCripto)", nome: "teste\(contadorCripto)", valor: 20.5 * Double(contadorCripto), imagem: "imagem\(contadorCripto)")
-            listaDeCriptomoedas.append(moeda)
-            contadorCripto += 1
-        }
     }
     
     override func tearDown() {
