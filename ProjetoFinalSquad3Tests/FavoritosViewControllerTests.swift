@@ -12,12 +12,10 @@ class FavoritosViewControllerTests: XCTestCase {
     
     
     var listaDePreferidas: [String] = []
-    
     var moedaCompartilhada: [Criptomoeda] = []
-   
     let controller = FavoritosViewController()
-
     var favoritosViewController: FavoritosViewController!
+    
     
     override func setUp() {
         var contadorCripto = 1
@@ -29,7 +27,6 @@ class FavoritosViewControllerTests: XCTestCase {
         
         favoritosViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "favoritosViewController") as? FavoritosViewController
         _ = favoritosViewController.view
-        
     }
 
     
@@ -38,17 +35,36 @@ class FavoritosViewControllerTests: XCTestCase {
     }
 
     
+    
+    func testCollectionViewNaoDeveEstarNilAposViewDidLoad() {
+        let sut = favoritosViewController
+        XCTAssertNotNil(sut?.myCollection)
+    }
+    
+    
+    func testDataSourceDaTableViewNaoDeveSerNil() {
+        let sut = favoritosViewController
+        
+        XCTAssertNotNil(sut?.myCollection?.dataSource)
+        XCTAssertNotNil(sut?.myCollection?.dataSource is FavoritosViewController)
+    }
+    
+//    func testCellForItemDeveRetornarCustomCollectionViewCell() {
+//        let collection = favoritosViewController?.myCollection
+//        favoritosViewController.listaMoedasFavoritas = moedaCompartilhada
+//        collection?.reloadData()
+//        let indexPath = IndexPath(item: 0, section: 0)
+//        let cell = collection?.cellForItem(at: indexPath)
+//        
+//        XCTAssertTrue(cell is CustomCollectionViewCell)
+//    }
+    
+    
     func testNumeroDeItensDaCollectionDeveSerIgualAQuantidadeDeDadosDoArray() {
         
         favoritosViewController.listaMoedasFavoritas = moedaCompartilhada
         
         XCTAssertEqual(favoritosViewController.myCollection?.numberOfItems(inSection: 0), 11, "Numero de itens na collection deve ser igual a 11")
-    }
-    
-    
-    func testCollectionViewNaoDeveEstarNilAposViewDidLoad() {
-        let sut = favoritosViewController
-        XCTAssertNotNil(sut?.myCollection)
     }
     
     
