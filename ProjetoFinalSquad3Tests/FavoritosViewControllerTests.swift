@@ -27,7 +27,7 @@ class FavoritosViewControllerTests: XCTestCase {
             contadorCripto += 1
         }
         
-        favoritosViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "favoritosViewController") as! FavoritosViewController
+        favoritosViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "favoritosViewController") as? FavoritosViewController
         _ = favoritosViewController.view
         
     }
@@ -46,24 +46,10 @@ class FavoritosViewControllerTests: XCTestCase {
     }
     
     
-    
-//    func testDadosEstaoSendoApresentadosCorretamente() {
-//        favoritosViewController.listaMoedasFavoritas = moedaCompartilhada
-//        favoritosViewController.myCollection?.reloadData()
-//        let indiceCell1 = NSIndexPath(item: 0, section: 0)
-//        let primeiraCell = favoritosViewController.myCollection?.cellForItem(at: indiceCell1 as IndexPath) as! CustomCollectionViewCell
-//        let indiceCell2 = NSIndexPath(item: 1, section: 0)
-//        let segundaCell = favoritosViewController.myCollection?.cellForItem(at: indiceCell2 as IndexPath) as! CustomCollectionViewCell
-//        let indiceCell3 = NSIndexPath(item: 2, section: 0)
-//        let terceiraCell = favoritosViewController.myCollection?.cellForItem(at: indiceCell3 as IndexPath) as! CustomCollectionViewCell
-//        
-//        XCTAssertEqual(primeiraCell.siglaMoeda?.text, "TST1")
-//        XCTAssertEqual(segundaCell.siglaMoeda?.text, "TST2")
-//        XCTAssertEqual(terceiraCell.siglaMoeda?.text, "TST3")
-//       
-//    }
-//    
-    
+    func testCollectionViewNaoDeveEstarNilAposViewDidLoad() {
+        let sut = favoritosViewController
+        XCTAssertNotNil(sut?.myCollection)
+    }
     
     
     func testDeveCriarListaDeCriptomoedasFavoritas() {
@@ -81,10 +67,10 @@ class FavoritosViewControllerTests: XCTestCase {
     
     
     func testDeveIgnorarStringVaziaDentroDoArrayDeFavoritas() {
-        var sigla1 = "TST2"
-        var sigla2 = ""
-        var sigla3 = "TST4"
-        var sigla4 = "TST6"
+        let sigla1 = "TST2"
+        let sigla2 = ""
+        let sigla3 = "TST4"
+        let sigla4 = "TST6"
         
         listaDePreferidas.append(sigla1)
         listaDePreferidas.append(sigla2)

@@ -21,7 +21,7 @@ class MoedasViewControllerTests: XCTestCase {
             contadorCripto += 1
         }
         
-        moedaViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MoedasViewController") as! MoedasViewController
+        moedaViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MoedasViewController") as? MoedasViewController
         _ = moedaViewController.view
     }
 
@@ -54,10 +54,9 @@ class MoedasViewControllerTests: XCTestCase {
     
     
     func testTableViewNaoDeveEstarNilAposViewDidLoad() {
-        let sut = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MoedasViewController") as! MoedasViewController
-        _ = sut.view
+        let sut = moedaViewController
         
-        XCTAssertNotNil(sut.listaMoedasTable)
+        XCTAssertNotNil(sut?.listaMoedasTable)
     }
     
     
