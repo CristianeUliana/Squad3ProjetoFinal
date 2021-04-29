@@ -72,16 +72,18 @@ class ProjetoFinalSquad3Tests: XCTestCase {
         let moeda = Criptomoeda(sigla: "", nome: "", valor: 0.0, imagem: "")
         customTableViewCell = CustumTableViewCell()
         customTableViewCell.configuraCelula(moeda)
-        
     }
     
     func testCustomCollectionViewCellConfigurarCelula() {
         let moeda = Criptomoeda(sigla: "", nome: "", valor: 0.0, imagem: "")
         customCollectionViewCell = CustomCollectionViewCell()
         customCollectionViewCell.configuraCelula(moeda)
-        
     }
     
+    func testChamadaBotaoTelaDeDetalhes() {
+        detalhesViewController = DetalhesViewController()
+        detalhesViewController.buttonAction()
+    }
     
     
     

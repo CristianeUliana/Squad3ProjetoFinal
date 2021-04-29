@@ -23,7 +23,8 @@ class DetalhesViewXibTests: QuickSpec {
             }
             
             it("should have a cool layout") {
-                expect(view) == snapshot()
+                expect(view) == recordSnapshot()
+                //expect(view) == snapshot()
             }
         }
     }

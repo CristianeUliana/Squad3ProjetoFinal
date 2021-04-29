@@ -44,4 +44,27 @@ class Request {
             }
         task.resume()
     }
+    
+    
+    func makeRequestTelaPrincipalMockada(filename: String, completion:@escaping([Criptomoeda]) -> Void) {
+        if let path = Bundle(for: type(of: self)).path(forResource: filename, ofType: "json") {
+            if let data = try? Data(contentsOf: URL(fileURLWithPath: path)) {
+                do {
+                    let moedas = try JSONDecoder().decode(Moedas.self, from: data)
+                    var moedaFiltrada = moedas.filter {$0.typeIsCrypto == 1 && $0.priceUsd ?? 0>0 && (($0.idIcon?.isEmpty) != nil)}
+                    for i in 0...(moedaFiltrada.count-1) {
+                        guard let sigla = moedaFiltrada[i].assetID else {return}
+                        guard let nome = moedaFiltrada[i].name else {return}
+                        guard let valor = moedaFiltrada[i].priceUsd else {return}
+                        guard let idIcon = moedaFiltrada[i].idIcon else {return}
+                        let criptomoeda = Criptomoeda(sigla: sigla, nome: nome, valor: valor, imagem: idIcon)
+                        self.listaDeMoedas.append(criptomoeda)
+                    }
+                    completion(self.listaDeMoedas)
+                } catch let error {
+                    print("error: \(error)")
+                }
+            }
+        }
+    }
 }

@@ -53,10 +53,13 @@ class FavoritosViewControllerTests: XCTestCase {
 //        let collection = favoritosViewController?.myCollection
 //        favoritosViewController.listaMoedasFavoritas = moedaCompartilhada
 //        collection?.reloadData()
-//        let indexPath = IndexPath(item: 0, section: 0)
-//        let cell = collection?.cellForItem(at: indexPath)
-//        
-//        XCTAssertTrue(cell is CustomCollectionViewCell)
+//        let indexPath = NSIndexPath(item: 0, section: 0)
+//        let cell = collection?.cellForItem(at: indexPath as IndexPath)
+//
+//
+//        XCTAssertNotNil(cell)
+//
+//       // XCTAssertTrue(cell is CustomCollectionViewCell)
 //    }
     
     

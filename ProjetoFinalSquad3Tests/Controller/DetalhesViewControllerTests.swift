@@ -51,5 +51,6 @@ class DetalhesViewControllerTests: XCTestCase {
         XCTAssertEqual(resultado2, "$ -10,00")
         XCTAssertEqual(resultado3, "$ 9.999.999,00")
     }
-    
+ 
+
 }
