@@ -7,7 +7,8 @@ Esse desafio busca orientar os desenvolvedores iOS, recém chegados, a respeito 
 
 Fluxo principal - Listagem de moedas
 
-
+<img alt="Fluxo Principal" title="Fluxo Principal" src="FluxoPrincipal1.png" width="300px" />
+<img alt="Fluxo Principal" title="Fluxo Principal" src="FluxoPrincipal2.png" width="300px" />
 
 Fluxo alternativo - Tratativa dos erros (HTTP errors)
 
